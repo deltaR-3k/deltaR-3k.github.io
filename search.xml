@@ -6,21 +6,706 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/03/01/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+    <title></title>
+    <url>/2023/03/01/%E7%89%A9%E7%90%86%E5%BC%95%E6%93%8E/</url>
+    <content><![CDATA[<p>为了实现简单的2D物理引擎，我们需要用到C++的面向对象编程思维，主要包括矢量类 Vector、刚体类 Rigidbody 和原圆类 Circle 三个类。</p>
+<p>首先，我们来构建 Vector 类。它应该包含物体的位置坐标、速度矢量等数据，并能完成一定运算。其实，这个类就是一个二维向量，可以定义如下：</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Vector</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">double</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Vector</span>(<span class="type">double</span> _x = <span class="number">0</span>, <span class="type">double</span> _y = <span class="number">0</span>) : <span class="built_in">x</span>(_x), <span class="built_in">y</span>(_y) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    Vector <span class="keyword">operator</span>+(<span class="type">const</span> Vector&amp; b) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Vector</span>(x + b.x, y + b.y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Vector <span class="keyword">operator</span>-(<span class="type">const</span> Vector&amp; b) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Vector</span>(x - b.x, y - b.y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Vector <span class="keyword">operator</span>*(<span class="type">double</span> b) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Vector</span>(x * b, y * b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">double</span> <span class="keyword">operator</span>*(<span class="type">const</span> Vector&amp; b) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x * b.x + y * b.y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">double</span> <span class="keyword">operator</span>^(<span class="type">const</span> Vector&amp; b) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x * b.y - y * b.x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">len</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hypot</span>(x, y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Vector <span class="title">rotate</span><span class="params">(<span class="type">double</span> angle)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Vector</span>(x * <span class="built_in">cos</span>(angle) - y * <span class="built_in">sin</span>(angle), x * <span class="built_in">sin</span>(angle) + y * <span class="built_in">cos</span>(angle));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Vector <span class="title">normalize</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Vector</span>(x / <span class="built_in">len</span>(), y / <span class="built_in">len</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+<p>Vector 类支持向量的加减、数乘、点积、叉积、求模、旋转和单位化等基本操作。</p>
+<p>接下来，我们来构建 Rigidbody 类。它应该包含物体的质量、位置坐标、速度矢量、加速度矢量等数据，并能够计算物体的运动状态。定义如下：</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Rigidbody</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">double</span> mass;  <span class="comment">// 质量</span></span><br><span class="line">    Vector pos;   <span class="comment">// 位置坐标</span></span><br><span class="line">    Vector v;     <span class="comment">// 速度矢量</span></span><br><span class="line">    Vector a;     <span class="comment">// 加速度矢量</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">Rigidbody</span>(<span class="type">double</span> _mass = <span class="number">1.0</span>, Vector _pos = <span class="built_in">Vector</span>(), Vector _v = <span class="built_in">Vector</span>(), Vector _a = <span class="built_in">Vector</span>())</span><br><span class="line">        : <span class="built_in">mass</span>(_mass), <span class="built_in">pos</span>(_pos), <span class="built_in">v</span>(_v), <span class="built_in">a</span>(_a) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">applyForce</span><span class="params">(<span class="type">const</span> Vector&amp; f)</span> </span>&#123;</span><br><span class="line">        a = a + f / mass;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">step</span><span class="params">(<span class="type">double</span> dt)</span> </span>&#123;</span><br><span class="line">        v = v + a * dt;</span><br><span class="line">        pos = pos + v * dt;</span><br><span class="line">        a = <span class="built_in">Vector</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+<p>Rigidbody 类支持施加力、计算运动状态等操作。</p>
+<p>最后，我们来构建 Circle 类。它应该派生自 Rigidbody 类，并具有半径、重量、位置坐标、速度等数据，并具有碰撞检测及处理方法和重力加速度。定义如下：</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> : <span class="keyword">public</span> Rigidbody &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">double</span> r;  <span class="comment">// 半径</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">Circle</span>(<span class="type">double</span> _mass = <span class="number">1.0</span>, Vector _pos = <span class="built_in">Vector</span>(), Vector _v = <span class="built_in">Vector</span>(), Vector _a = <span class="built_in">Vector</span>(), <span class="type">double</span> _r = <span class="number">1.0</span>)</span><br><span class="line">        : <span class="built_in">Rigidbody</span>(_mass, _pos, _v, _a), <span class="built_in">r</span>(_r) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">collide</span><span class="params">(<span class="type">const</span> Circle&amp; b)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (pos - b.pos).<span class="built_in">len</span>() &lt; r + b.r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solveCollision</span><span class="params">(Circle&amp; b)</span> </span>&#123;</span><br><span class="line">    Vector n = (b.pos - pos).<span class="built_in">normalize</span>();</span><br><span class="line">    Vector v1 = v * n * n;</span><br><span class="line">    Vector v2 = b.v * n * n;</span><br><span class="line">    v = v - v1 + v2;</span><br><span class="line">    b.v = b.v - v2 + v1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solveWall</span><span class="params">(<span class="type">double</span> width, <span class="type">double</span> height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pos.x - r &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        v.x = -v.x;</span><br><span class="line">        pos.x = r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (pos.x + r &gt; width) &#123;</span><br><span class="line">        v.x = -v.x;</span><br><span class="line">        pos.x = width - r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (pos.y - r &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        v.y = -v.y;</span><br><span class="line">        pos.y = r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (pos.y + r &gt; height) &#123;</span><br><span class="line">        v.y = -v.y;</span><br><span class="line">        pos.y = height - r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">applyGravity</span><span class="params">(<span class="type">const</span> Vector&amp; g)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">applyForce</span>(mass * g);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+<p>Circle 类继承自 Rigidbody 类，并添加了半径 r 属性。它支持碰撞检测、碰撞处理、墙壁碰撞处理和施加重力等操作。 我们可以使用 OpenCV 或者 Qt 等图形库来显示引擎的运行效果。代码结构大致如下：</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> width = <span class="number">640</span>, height = <span class="number">480</span>;</span><br><span class="line">    <span class="function">Circle <span class="title">a</span><span class="params">(<span class="number">1</span>, Vector(<span class="number">100</span>, <span class="number">100</span>), Vector(<span class="number">50</span>, <span class="number">0</span>), Vector(), <span class="number">30</span>)</span></span>;</span><br><span class="line">    <span class="function">Circle <span class="title">b</span><span class="params">(<span class="number">1</span>, Vector(<span class="number">500</span>, <span class="number">400</span>), Vector(<span class="number">-50</span>, <span class="number">0</span>), Vector(), <span class="number">30</span>)</span></span>;</span><br><span class="line">    <span class="function">Vector <span class="title">g</span><span class="params">(<span class="number">0</span>, <span class="number">10</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="comment">// 处理输入事件</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 清空屏幕</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算物体的运动状态</span></span><br><span class="line">        a.<span class="built_in">applyGravity</span>(g);</span><br><span class="line">        a.<span class="built_in">solveWall</span>(width, height);</span><br><span class="line">        b.<span class="built_in">applyGravity</span>(g);</span><br><span class="line">        b.<span class="built_in">solveWall</span>(width, height);</span><br><span class="line">        <span class="keyword">if</span> (a.<span class="built_in">collide</span>(b)) &#123;</span><br><span class="line">            a.<span class="built_in">solveCollision</span>(b);</span><br><span class="line">        &#125;</span><br><span class="line">        a.<span class="built_in">step</span>(<span class="number">0.01</span>);</span><br><span class="line">        b.<span class="built_in">step</span>(<span class="number">0.01</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 显示物体的状态</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 等待下一帧</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>在主循环中，我们先处理输入事件，然后清空屏幕，接着计算物体的运动状态，然后显示物体的状态，最后等待下一帧。注意，这个主循环会一直运行，直到程序被终止。</p>
+<p>以上就是一个简单的2D物理引擎的实现。在实际开发中，我们还可以添加更多的物理效果，比如摩擦力、空气阻力、弹性碰撞等等。同时，我们也可以使用更加高效的数值计算方法来提高引擎的性能，比如使用Verlet算法等。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/03/01/%E5%8D%95%E8%AF%8D%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<ol>
+<li>argument - 传入函数或程序的值</li>
+<li>assign; assignment operator - 变量赋值操作符</li>
+<li>parameter - 函数或程序的输入参数</li>
+<li>margin - 文档中元素与边界的空白距离</li>
+<li>prompt - 用户输入或选择的提示</li>
+<li>execute - 执行程序</li>
+<li>cursor - 文本光标</li>
+<li>specify - 明确指定</li>
+<li>restore - 恢复原状态</li>
+<li>decimal - 十进制小数</li>
+<li>attribute - 元素的附加信息</li>
+<li>dos - 早期操作系统</li>
+<li>array - 数据集合</li>
+<li>scope - 变量或常量的可用范围</li>
+<li>profile - 用户或程序的配置信息</li>
+<li>numeric - 数字型</li>
+<li>pointer - 存储数据地址的变量</li>
+<li>set&#x2F;subset - 集合&#x2F;集合的一部分</li>
+<li>delimiter - 分隔符</li>
+<li>location - 元素或数据的位置</li>
+<li>call; callback - 调用函数&#x2F;回调函数</li>
+<li>swap - 交换两个值</li>
+<li>adaptor - 设备连接器</li>
+<li>access; accessibility - 访问权限&#x2F;可访问性</li>
+<li>activate - 激活</li>
+<li>aggregation - 数据组合 </li>
+<li>algorithm - 算法</li>
+<li>allocator - 内存分配器</li>
+<li>annotation - 注释</li>
+<li>bundle - 安装包</li>
+<li>architecture - 架构</li>
+<li>arity - 参数个数</li>
+<li>artifact - 构建产物</li>
+<li>assembly language - 汇编语言</li>
+<li>assert; assertion - 断言</li>
+<li>authenticate; authentication - 身份验证</li>
+<li>authorize; authorization - 授权</li>
+<li>batch - 批处理</li>
+<li>bandwidth - 带宽</li>
+<li>background progress - 后台进程</li>
+<li>binary - 二进制</li>
+<li>bind - 绑定</li>
+<li>bitrate - 比特率</li>
+<li>blocker - 阻止程序</li>
+<li>bounce - 退回</li>
+<li>breakpoint - 断点</li>
+<li>build-in - 内置</li>
+<li>bus - 总线</li>
+<li>cache - 缓存</li>
+<li>check; check box - 复选框</li>
+<li>class - 类</li>
+<li>client-side; server-side - 客户端；服务端</li>
+<li>clipboard - 剪贴板</li>
+<li>cohesion - 组合关系</li>
+<li>collaborate - 协作</li>
+<li>combo box - 组合框</li>
+<li>comment - 注释</li>
+<li>compatibility;compatible; backward compatible - 兼容性；向下兼容</li>
+<li>compile; compilation; compiler - 编译；编译器</li>
+<li>compress - 压缩</li>
+<li>coupling - 依赖关系</li>
+<li>coroutine - 协程</li>
+<li>context - 上下文</li>
+<li>concurrent; concurrency - 并发；并发性</li>
+<li>configuration - 配置</li>
+<li>constructor - 构造函数</li>
+<li>constraint - 约束</li>
+<li>computation - 计算</li>
+<li>orientation - 方向</li>
+<li>paradigm - 范式</li>
+<li>fundamentals - 基础</li>
+<li>manipulation - 操作</li>
+<li>commas - 逗号</li>
+<li>notation - 符号</li>
+<li>tailor - 定制</li>
+<li>parenthesis - 括号</li>
+<li>diagram - 图表</li>
+<li>schema - 模式</li>
+<li>deadlock - 死锁</li>
+<li>declare; declaration - 声明</li>
+<li>delegate - 代表</li>
+<li>derived class - 派生类</li>
+<li>dialog - 对话框</li>
+<li>dispatch - 分发</li>
+<li>distribute; distribution -分布;分发 </li>
+<li>domain - 域</li>
+<li>drop down menu&#x2F;list - 下拉菜单&#x2F;列表</li>
+<li>enumeration - 枚举</li>
+<li>encapsulation - 封装</li>
+<li>escape code - 转义符</li>
+<li>exception - 异常</li>
+<li>explicit - 明确</li>
+<li>import; export - 导入;导出</li>
+<li>extension - 扩展</li>
+<li>field - 字段</li>
+<li>filter - 过滤器</li>
+<li>firmware; hardware - 固件;硬件</li>
+<li>flag - 标志</li>
+<li>folder - 文件夹</li>
+<li>form - 表格</li>
+<li>feedback - 反馈</li>
+<li>format - 格式</li>
+<li>flash memory - 闪存</li>
+<li>flush - 刷新</li>
+<li>forward - 转发</li>
+<li>fragment - 片段</li>
+<li>frame; frames per second(fps) - 帧; 每秒帧数</li>
+<li>frozen - 冻结</li>
+<li>gateway - 网关</li>
+<li>general - 通用</li>
+<li>generic; generics - 泛型; 泛型编程</li>
+<li>global - 全局</li>
+<li>handler - 处理器</li>
+<li>header file - 头文件</li>
+<li>heap - 堆</li>
+<li>hierarchy - 分层</li>
+<li>high definition - 高清</li>
+<li>host file - 主机文件</li>
+<li>home folder - 主目录</li>
+<li>hint - 提示</li>
+<li>intent - 意图</li>
+<li>suppress - 抑制</li>
+<li>exemplify - 举例</li>
+<li>evoke - 唤起</li>
+<li>lowercase; capital - 小写;大写</li>
+<li>underscore - 下划线</li>
+<li>internally - 内部</li>
+<li>scope - 作用域</li>
+<li>implementation - 实现</li>
+<li>yield - 生成</li>
+<li>constitute - 构成</li>
+<li>depict - 描述</li>
+<li>simultaneously - 同时</li>
+<li>identifier - 标识符</li>
+<li>idle - 闲置</li>
+<li>immutable; mutable - 不可变的; 可变的</li>
+<li>implicit - 隐式</li>
+<li>indent - 缩进</li>
+<li>initialization - 初始化</li>
+<li>inline - 内嵌</li>
+<li>integrated; integrity - 集成;完整性</li>
+<li>interpreter - 解释器</li>
+<li>interface - 接口</li>
+<li>internal storage - 内部存储</li>
+<li>invoke - 调用</li>
+<li>iterate - 迭代</li>
+<li>kernel - 内核</li>
+<li>keybind - 绑定快捷键</li>
+<li>lag - 滞后</li>
+<li>layout - 布局</li>
+<li>literals; literal constant - 字面量; 字面常量</li>
+<li>variable - 变量</li>
+<li>loop - 循环</li>
+<li>map; mapping - 映射; 映射关系</li>
+<li>metadata - 元数据</li>
+<li>moderate - 中等</li>
+<li>modifier - 修饰符</li>
+<li>module - 模块</li>
+<li>monomorphism; polymorphism - 单态;多态</li>
+<li>mutex - 互斥锁</li>
+<li>motherboard - 主板</li>
+<li>navigate; navigation; navigator - 导航;导航程序</li>
+<li>nested - 嵌套</li>
+<li>notarization - 签名认证</li>
+<li>object code&#x2F;file&#x2F;oriented - 对象代码&#x2F;文件&#x2F;面向对象</li>
+<li>operand - 操作数</li>
+<li>operator - 操作符</li>
+<li>operating system - 操作系统</li>
+<li>optimize; optimization - 优化;优化程序</li>
+<li>overflow - 溢出</li>
+<li>overlay - 覆盖</li>
+<li>override - 重写</li>
+<li>pane - 窗格</li>
+<li>parallelism - 并行</li>
+<li>parse - 解析</li>
+<li>partition - 分区</li>
+<li>paste - 粘贴</li>
+<li>patch - 补丁</li>
+<li>pattern - 模式</li>
+<li>performance - 性能</li>
+<li>physical layer; presentation layer - 物理层;展示层</li>
+<li>picklist; pull-down list - 下拉列表</li>
+<li>placeholder - 占位符</li>
+<li>plugin; pluggability - 插件;可插拔性</li>
+<li>port - 端口</li>
+<li>powerbank - 电源银行</li>
+<li>preset - 预设</li>
+<li>profile; personal profile; profiler - 配置文件;个人配置文件;性能分析器</li>
+<li>protocol - 协议</li>
+<li>provision - 条件</li>
+<li>proxy - 代理</li>
+<li>pseudo code - 伪代码</li>
+<li>quit unexpectedly - 意外终止</li>
+<li>radian - 弧度</li>
+<li>radio button - 单选按钮</li>
+<li>RAM(random access memory) - 随机存取存储器</li>
+<li>recursion - 递归</li>
+<li>recovery - 恢复</li>
+<li>register - 注册</li>
+<li>reference - 引用</li>
+<li>render - 渲染</li>
+<li>resolution - 分辨率</li>
+<li>response body&#x2F;header - 响应体&#x2F;响应头</li>
+<li>revoke; revocation - 撤销;吊销</li>
+<li>rollback - 回滚</li>
+<li>routine - 例行程序</li>
+<li>runtime - 运行时</li>
+<li>safe - 安全</li>
+<li>scalability - 可扩展性</li>
+<li>scan - 扫描</li>
+<li>script - 脚本</li>
+<li>scrollbar - 滚动条</li>
+<li>search - 搜索</li>
+<li>selector - 选择器</li>
+<li>semantic - 语义</li>
+<li>sequence - 顺序</li>
+<li>serialization - 序列化</li>
+<li>server - 服务器</li>
+<li>service - 服务</li>
+<li>session - 会话</li>
+<li>shell - 外壳</li>
+<li>signature - 签名</li>
+<li>singleton - 单例</li>
+<li>sink - 汇点</li>
+<li>slide - 滑动</li>
+<li>software - 软件</li>
+<li>source - 源</li>
+<li>space - 空间</li>
+<li>spawn - 创建</li>
+<li>stack - 栈</li>
+<li>statement - 语句</li>
+<li>static - 静态</li>
+<li>status - 状态</li>
+<li>step - 步骤</li>
+<li>storage - 存储</li>
+<li>stream - 流</li>
+<li>string - 字符串</li>
+<li>style - 样式</li>
+<li>submit - 提交</li>
+<li>subscription - 订阅</li>
+<li>suffix - 后缀</li>
+<li>summary - 摘要</li>
+<li>superclass - 超类</li>
+<li>switch - 切换</li>
+<li>symbol - 符号</li>
+<li>sync - 同步</li>
+<li>syntax - 语法</li>
+<li>system - 系统</li>
+<li>target - 目标</li>
+<li>template - 模板</li>
+<li>terminal - 终端</li>
+<li>test - 测试</li>
+<li>text - 文本</li>
+<li>thread - 线程</li>
+<li>threshold - 阈值</li>
+<li>throw - 抛出</li>
+<li>token - 令牌</li>
+<li>tool - 工具</li>
+<li>trace - 跟踪</li>
+<li>transaction - 事务</li>
+<li>transport - 传输</li>
+<li>trigger - 触发</li>
+<li>true&#x2F;false - 真&#x2F;假</li>
+<li>type - 类型</li>
+<li>typography - 排版</li>
+<li>unbind - 解除绑定</li>
+<li>undo - 撤销</li>
+<li>union - 并集</li>
+<li>unique - 唯一</li>
+<li>unit - 单位</li>
+<li>upgrade - 升级</li>
+<li>upload - 上传</li>
+<li>url - 网址</li>
+<li>user - 用户</li>
+<li>validate - 验证</li>
+<li>variable - 变量</li>
+<li>vector - 矢量</li>
+<li>version - 版本</li>
+<li>view - 视图</li>
+<li>virtual - 虚拟</li>
+<li>visibility - 可见性</li>
+<li>visual - 视觉</li>
+<li>void - 空</li>
+<li>wait - 等待</li>
+<li>widget - 部件</li>
+<li>width - 宽度</li>
+<li>wildcard - 通配符</li>
+<li>window - 窗口</li>
+<li>wireless - 无线</li>
+<li>wrapper - 包装器</li>
+<li>write - 写入</li>
+<li>zoom - 缩放</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/03/01/PROPER%20WORDS%20IN%20CS(UNFAMILIER)/</url>
+    <content><![CDATA[<h3 id="DAY-0"><a href="#DAY-0" class="headerlink" title="DAY  0"></a>DAY  0</h3><ol>
+<li>argument</li>
+<li>assign;assignment operator</li>
+<li>parameter</li>
+<li>margin</li>
+<li>prompt</li>
+<li>execute</li>
+<li>cursor</li>
+<li>specify</li>
+<li>restore</li>
+<li>decimal</li>
+<li>attribute</li>
+<li>dos</li>
+<li>array</li>
+<li>scope</li>
+<li>profile</li>
+<li>numeric</li>
+<li>pointer</li>
+<li>set&#x2F;subset</li>
+<li>delimiter</li>
+<li>location</li>
+<li>call;callback</li>
+<li>swap</li>
+</ol>
+<hr>
+<h3 id="DAY-1"><a href="#DAY-1" class="headerlink" title="DAY 1"></a>DAY 1</h3><ol>
+<li>adaptor</li>
+<li>access;accessibility</li>
+<li>activate</li>
+<li>aggregation</li>
+<li>algorithm</li>
+<li>allocator</li>
+<li>annotation</li>
+<li>bundle</li>
+<li>architecture</li>
+<li>arity</li>
+<li>artifact</li>
+<li>assembly language</li>
+<li>assert;assertion</li>
+<li>authenticate;authentication</li>
+<li>authorize;authorization</li>
+<li>batch</li>
+<li>bandwidth</li>
+<li>background progresses</li>
+<li>binary</li>
+<li>bind</li>
+<li>bitrate</li>
+<li>blocker</li>
+<li>bounce</li>
+<li>breakpoint</li>
+<li>build-in</li>
+<li>bus</li>
+<li>cache</li>
+<li>check;check box</li>
+<li>class</li>
+<li>client-side; server-side</li>
+<li>clipboard</li>
+<li>cohesion</li>
+<li>collaborate</li>
+<li>combo box</li>
+<li>comment</li>
+<li>compatibility;compatible; backward compatible</li>
+<li>compile; compilation; compiler</li>
+<li>compress</li>
+<li>coupling</li>
+<li>coroutine</li>
+<li>context</li>
+<li>concurrent;concurrency</li>
+<li>configuration</li>
+<li>constructor</li>
+<li>constraint</li>
+<li>computation</li>
+</ol>
+<hr>
+<h3 id="DAY-2"><a href="#DAY-2" class="headerlink" title="DAY 2"></a>DAY 2</h3><ol>
+<li>orientation</li>
+<li>paradigm</li>
+<li>fundamentals</li>
+<li>manipulation</li>
+<li>commas</li>
+<li>notation</li>
+<li>tailor</li>
+<li>parenthesis</li>
+<li>diagram</li>
+<li>schema</li>
+<li>deadlock</li>
+<li>declare;declaration</li>
+<li>delegate</li>
+<li>derived class</li>
+<li>dialog</li>
+<li>dispatch</li>
+<li>distribute;distribution</li>
+<li>domain</li>
+<li>drop down menu&#x2F;list</li>
+<li>enumeration</li>
+<li>encapsulation</li>
+<li>escape code</li>
+<li>exception</li>
+<li>explicit</li>
+<li>import;export</li>
+<li>extension</li>
+<li>field</li>
+<li>filter</li>
+<li>firmware; hardware</li>
+<li>flag</li>
+<li>folder</li>
+<li>form</li>
+<li>feedback</li>
+<li>format</li>
+<li>flash memory</li>
+<li>flush</li>
+<li>forward</li>
+<li>fragment</li>
+<li>frame; frames per second(fps)</li>
+<li>frozen</li>
+<li>gateway</li>
+<li>general</li>
+<li>generic; generics</li>
+<li>globel</li>
+<li>handler</li>
+<li>header file</li>
+<li>heap</li>
+<li>hierarchy</li>
+<li>high definition</li>
+<li>host file</li>
+<li>home folder</li>
+</ol>
+<hr>
+<h3 id="DAY-3"><a href="#DAY-3" class="headerlink" title="DAY 3"></a>DAY 3</h3><ol>
+<li>hint</li>
+<li>intent</li>
+<li>suppress</li>
+<li>exemplify</li>
+<li>evoke</li>
+<li>lowercase;capital</li>
+<li>underscore</li>
+<li>internally</li>
+<li>scope</li>
+<li>implementation</li>
+<li>yield</li>
+<li>constitute</li>
+<li>depict</li>
+<li>simultaneously</li>
+<li>identifier</li>
+<li>idle</li>
+<li>immutable; mutable</li>
+<li>implicit</li>
+<li>indent</li>
+<li>initialization</li>
+<li>inline</li>
+<li>integrated;integrity</li>
+<li>interpreter</li>
+<li>interface</li>
+<li>internal storage</li>
+<li>invoke</li>
+<li>iterate</li>
+<li>kernel</li>
+<li>keybind</li>
+<li>lag</li>
+<li>layout</li>
+<li>literals; literal constant</li>
+<li>variable</li>
+<li>loop</li>
+<li>map;mapping</li>
+<li>metadata</li>
+<li>moderate</li>
+<li>modifier</li>
+<li>module</li>
+<li>monomorphism;polymorphism</li>
+<li>mutex</li>
+<li>motherboard</li>
+<li>navigate; navigation; navigator</li>
+<li>nested</li>
+<li>notarization</li>
+</ol>
+<hr>
+<h3 id="DAY-4"><a href="#DAY-4" class="headerlink" title="DAY 4"></a>DAY 4</h3><ol>
+<li>object code&#x2F;file&#x2F;oriented</li>
+<li>operand</li>
+<li>operator</li>
+<li>operating system</li>
+<li>optimize; optimization</li>
+<li>overflow</li>
+<li>overlay</li>
+<li>override</li>
+<li>pane</li>
+<li>parallelism</li>
+<li>parse</li>
+<li>partition</li>
+<li>paste</li>
+<li>patch</li>
+<li>pattern</li>
+<li>performance</li>
+<li>physical layer; presentation layer</li>
+<li>picklist; pull-down list</li>
+<li>placeholder</li>
+<li>plugin;pluggability</li>
+<li>port</li>
+<li>powerbank</li>
+<li>preset</li>
+<li>profile; personal profile; profiler</li>
+<li>protocol</li>
+<li>provision</li>
+<li>proxy</li>
+<li>pseudo code</li>
+<li>quit unexpectedly</li>
+<li>radian</li>
+<li>radio button</li>
+<li>ram(randam access memory)</li>
+<li>recurison</li>
+<li>recovery</li>
+<li>register</li>
+<li>reference</li>
+<li>render</li>
+<li>resolution</li>
+<li>response body&#x2F;header</li>
+<li>revoke; revocation</li>
+<li>rollback</li>
+<li>routine</li>
+<li>runtime environment&#x2F;system</li>
+</ol>
+<hr>
+<h3 id="DAY-5"><a href="#DAY-5" class="headerlink" title="DAY 5"></a>DAY 5</h3><ol>
+<li>valid</li>
+<li>docstring</li>
+<li>DRY</li>
+<li>redundant</li>
+<li>particle</li>
+<li>discarded</li>
+<li>compound</li>
+<li>colon</li>
+<li>dictate</li>
+<li>suite</li>
+<li>decompose</li>
+<li>exploit</li>
+<li>circuit</li>
+<li>scalar; vector</li>
+<li>schedule; scheduler</li>
+<li>scroll bar; status bar</li>
+<li>SDK (software development kit)</li>
+<li>segment</li>
+<li>session; session layer</li>
+<li>shortcut; shortcut-key</li>
+<li>slider</li>
+<li>silicon</li>
+<li>SMS(short message service)</li>
+<li>snip</li>
+<li>source code</li>
+<li>stack</li>
+<li>star rating</li>
+<li>stream</li>
+<li>stuttering</li>
+<li>string interpolation</li>
+<li>subclass; subroutine; super class</li>
+<li>synchronize; synchronous</li>
+<li>tab</li>
+<li>tag</li>
+<li>template</li>
+<li>thread</li>
+<li>top-up</li>
+<li>token</li>
+<li>traverse</li>
+<li>tray; system tray</li>
+<li>tuple</li>
+<li>tutorial</li>
+<li>universal</li>
+<li>volume</li>
+<li>widget</li>
+<li>wildcard</li>
+</ol>
+<hr>
+<h3 id="DAY-6"><a href="#DAY-6" class="headerlink" title="DAY 6"></a>DAY 6</h3><ol>
+<li>ad hoc</li>
+<li>access; access function</li>
+<li>alias</li>
+<li>anaphoric</li>
+<li>annonymous function</li>
+<li>antecedent</li>
+<li>append</li>
+<li>API(application program interface); ASP(application service provider)</li>
+<li>arithmetic</li>
+<li>assemble; assembly</li>
+<li>augmented</li>
+<li>auxiliary</li>
+<li>backquote</li>
+<li>backtrace</li>
+<li>base case; base class</li>
+<li>best viable function</li>
+<li>block</li>
+<li>boilerplate</li>
+<li>bookkeeping</li>
+<li>border</li>
+<li>bottom-up design&#x2F;programming</li>
+<li>bound; bounds checking 边界</li>
+<li>notation 表示法</li>
+<li>breadth-first</li>
+<li>brevity</li>
+<li>buffer</li>
+<li>paradox</li>
+<li>brace; bracklet</li>
+<li>branch</li>
+</ol>
+<hr>
+<p>1. </p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/03/01/Oct%E9%9B%86%E8%AE%AD%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="day3笔记"><a href="#day3笔记" class="headerlink" title="day3笔记"></a>day3笔记</h3><ul>
+<li><strong>%d</strong> 十进制有符号整数</li>
+<li><strong>%u</strong> 十进制无符号整数</li>
+<li><strong>%f</strong> 浮点数</li>
+<li><strong>%lf</strong> double类型</li>
+<li><strong>%s</strong> 字符串</li>
+<li><strong>%c</strong> 单个字符</li>
+<li><strong>%p</strong> 指针的值</li>
+<li><strong>%e</strong> 指数形式的浮点数</li>
+<li><strong>%x, %X</strong> 无符号以十六进制表示的整数</li>
+<li><strong>%o</strong> 无符号以八进制表示的整数</li>
+<li><strong>%g</strong> 把输出的值按照 %e 或者 %f 类型中输出长度较小的方式输出</li>
+<li><strong>%p</strong> 输出地址符</li>
+<li><strong>%lu</strong> 32位无符号整数</li>
+<li><strong>%llu</strong> 64位无符号整数</li>
+<li>printf<code>函数的一个重要特性：**参数从后往前求值。** 即：</code>printf(“%u %u\n”, work1(), work2())<code>会先执行</code>work2()<code>再执行</code>work1()&#96;。</li>
+</ul>
+<h3 id="day4笔记"><a href="#day4笔记" class="headerlink" title="day4笔记"></a>day4笔记</h3><ul>
+<li>%02d %.2f</li>
+<li>pow(x,y) sqrt(x) fabs(x)  mode(,)涉及指针   ceil(), floor()</li>
+<li>注意大部分函数值必须为double类型（否则无意义），需要类型转换或者加*1.0</li>
+</ul>
+<h3 id="day5笔记"><a href="#day5笔记" class="headerlink" title="day5笔记"></a>day5笔记</h3><ul>
+<li><p>位运算（按二进制位展开）（长度不一样时按右端对齐）</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+<th>运算规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>与</td>
+<td>两个位都为1时，结果才为1</td>
+</tr>
+<tr>
+<td>&amp;#124;</td>
+<td>或</td>
+<td>两个位都为0时，结果才为0</td>
+</tr>
+<tr>
+<td>^</td>
+<td>异或</td>
+<td>两个位相同为0，相异为1（x^x&#x3D;0，x^0&#x3D;x），满足结合律，交换律；用于交换数字：x^1&#x3D;取反，x^0&#x3D;不变</td>
+</tr>
+<tr>
+<td>~</td>
+<td>取反</td>
+<td>0变1，1变0</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+<td>各二进位全部左移若干位，高位丢弃，低位补0</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+<td>各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>负数补码：取反后+1，反之由补码得到负数为-1后取反</p>
+</li>
+</ul>
+<p>srand((unsigned)time(NULL));<br>array[]&#x3D;a+rand()%n</p>
 ]]></content>
   </entry>
 </search>
