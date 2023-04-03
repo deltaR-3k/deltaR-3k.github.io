@@ -28,14 +28,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="false">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213624833.png">
 <meta property="article:published_time" content="2023-04-03T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-04-03T09:36:17.709Z">
+<meta property="article:modified_time" content="2023-04-03T09:38:48.588Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="NOJ">
 <meta property="article:tag" content="Data Structure">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213624833.png">
     
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="/images/hexo.png" sizes="192x192">
@@ -306,8 +304,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-04-03 17:36:17</span>
-            <span class="mobile">2023-04-03 17:36</span>
+            <span class="desktop">2023-04-03 17:38:48</span>
+            <span class="mobile">2023-04-03 17:38</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -344,7 +342,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>187 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>167 Words</span>
         </span>
     
     
@@ -361,13 +359,7 @@
             
 
             <div class="article-content markdown-body">
-                <h3 id="G1-1"><a href="#G1-1" class="headerlink" title="G1.1"></a>G1.1</h3><p>&lt;img src&#x3D;”D:\blog\source\images\noj_ds1.png” alt&#x3D;”image-20230402213512918” style&#x3D;”zoom: 50%;” &#x2F;<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213624833.png"
-                      alt="image-20230402213624833" style="zoom: 50%;" 
-                ></p>
-<p>Simple question, using SeqList and its Insertion.</p>
+                <h3 id="G1-1"><a href="#G1-1" class="headerlink" title="G1.1"></a>G1.1</h3><p>Simple question, using SeqList and its Insertion.</p>
 <p>The total code is down here:</p>
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Language up to you; Personally use cpp more.</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">SeqList</span> &#123;</span><br><span class="line">    <span class="type">int</span> elenum;</span><br><span class="line">    <span class="type">int</span> list[MAXSIZE];</span><br><span class="line">&#125;SeqList, *pSeqList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Insert</span><span class="params">(<span class="type">int</span> x, pSeqList pl)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; pl-&gt;elenum; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &lt; pl-&gt;list[i]) &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = pl-&gt;elenum; j &gt; i; j--) &#123;</span><br><span class="line">                pl-&gt;list[j] = pl-&gt;list[j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            pl-&gt;list[i] = x;</span><br><span class="line">            pl-&gt;elenum++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SeqList L;</span><br><span class="line">    pSeqList pl = &amp;L;</span><br><span class="line">    <span class="type">int</span> x, i;</span><br><span class="line">    cin &gt;&gt; L.elenum ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; L.elenum; i++) &#123;</span><br><span class="line">        cin &gt;&gt; L.list[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="built_in">Insert</span>(x, pl);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; L.elenum; i++) &#123;</span><br><span class="line">        cout &lt;&lt; L.list[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
@@ -383,7 +375,7 @@
         <li><strong>Created at:</strong> 2023-04-03 23:00:00</li>
         
             <li>
-                <strong>Updated at:</strong> 2023-04-03 17:36:17
+                <strong>Updated at:</strong> 2023-04-03 17:38:48
             </li>
         
         <li>
