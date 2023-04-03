@@ -55,7 +55,7 @@
     <script id="hexo-configurations">
     let Global = window.Global || {};
     Global.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
-    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[""]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"�Ƽ��Ķ�","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#005080","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true},"home_banner":{"enable":true,"image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"NPU-IdlingLand","subtitle":{"text":["WELCOME to Myland"],"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://deltar-3k.github.io","instagram":null,"zhihu":null,"twitter":null,"email":"deltaR_chen@outlook.com"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"audios":[{"name":null,"artist":null,"url":null,"cover":null},{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://deltar-3k.github.io","Blog":"https://deltar-3k.github.io","Friends":"/friends"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[""]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"�Ƽ��Ķ�","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#005080","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":false},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true},"home_banner":{"enable":true,"image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"NPU-IdlingLand","subtitle":{"text":["WELCOME to Myland"],"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://deltar-3k.github.io","instagram":null,"zhihu":null,"twitter":null,"email":"deltaR_chen@outlook.com"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"audios":[{"name":null,"artist":null,"url":null,"cover":null},{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://deltar-3k.github.io","Blog":"https://deltar-3k.github.io","Friends":"/friends"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
     Global.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
     
@@ -81,6 +81,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -323,11 +325,11 @@
                     <div class="label">Tags</div>
                 </a>
                 <a class="item" href="/categories">
-                    <div class="number">0</div>
+                    <div class="number">1</div>
                     <div class="label">Category</div>
                 </a>
                 <a class="item" href="/archives">
-                    <div class="number">7</div>
+                    <div class="number">3</div>
                     <div class="label">Posts</div>
                 </a>
             </div>
@@ -351,33 +353,46 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/04/02/%5BNWPU%20Data%20Structure%20NOJ%20Practice%20Answers%5D%20by%20NPUIdler/">
-                        
+                    <a href="/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/">
+                        NOJ DS G1:SeqList
                     </a>
                 </h3>
 
                 <div class="home-article-content markdown-body">
                     
-                        [NWPU Data Structure NOJ Practice Answers]	by NPUIdlerG1: SeqListG1.1
+                        NOJ DS G1:SeqListG1.1
 Simple question, using SeqList and its Insertion.
-The t...
+The total code is down here:
+123456789101112131415161...
                     
                 </div>
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Apr 02 2023 21:59:21 GMT+0800">
+            <span class="home-article-date" data-date="Mon Apr 03 2023 19:09:41 GMT+0800">
                 
-                    2023-04-02
+                    2023-04-03
                 
             </span>
         </span>
         
+            <span class="home-article-category"><i class="fa-solid fa-folders"></i></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/NOJ-DS-Answers/">NOJ DS Answers</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
         
     </div>
 
-    <a href="/2023/04/02/%5BNWPU%20Data%20Structure%20NOJ%20Practice%20Answers%5D%20by%20NPUIdler/">Read more<span class="seo-reader-text"></span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/">Read more<span class="seo-reader-text">NOJ DS G1:SeqList</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -427,180 +442,6 @@ The t...
     </div>
 
     <a href="/2023/03/01/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E8%82%B2%E7%AC%94%E8%AE%B0/">Read more<span class="seo-reader-text">大学美育笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/03/01/Oct%E9%9B%86%E8%AE%AD%E7%AC%94%E8%AE%B0/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        day3笔记
-%d 十进制有符号整数
-%u 十进制无符号整数
-%f 浮点数
-%lf double类型
-%s 字符串
-%c 单个字符
-%p 指针的值
-%e 指数形式的浮点数
-%x, %X 无符号以十六进制表示的整数
-%o 无符号以八进制表示的整数
-%g...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Mar 01 2023 19:03:18 GMT+0800">
-                
-                    2023-03-01
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2023/03/01/Oct%E9%9B%86%E8%AE%AD%E7%AC%94%E8%AE%B0/">Read more<span class="seo-reader-text"></span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/03/01/%E5%8D%95%E8%AF%8D%E5%A4%8D%E4%B9%A0/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        
-argument - 传入函数或程序的值
-assign; assignment operator - 变量赋值操作符
-parameter - 函数或程序的输入参数
-margin - 文档中元素与边界的空白距离
-prompt - 用户输入或选择的提示...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Mar 01 2023 19:03:18 GMT+0800">
-                
-                    2023-03-01
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2023/03/01/%E5%8D%95%E8%AF%8D%E5%A4%8D%E4%B9%A0/">Read more<span class="seo-reader-text"></span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/03/01/PROPER%20WORDS%20IN%20CS(UNFAMILIER)/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        DAY  0
-argument
-assign;assignment operator
-parameter
-margin
-prompt
-execute
-cursor
-specify
-restore
-decimal
-attribute
-dos
-array...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Mar 01 2023 19:03:18 GMT+0800">
-                
-                    2023-03-01
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2023/03/01/PROPER%20WORDS%20IN%20CS(UNFAMILIER)/">Read more<span class="seo-reader-text"></span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/03/01/%E7%89%A9%E7%90%86%E5%BC%95%E6%93%8E/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        为了实现简单的2D物理引擎，我们需要用到C++的面向对象编程思维，主要包括矢量类 Vector、刚体类 Rigidbody 和原圆类 Circle 三个类。
-首先，我们来构建 Vector 类。它应该包含物体的位置坐标、速度矢量等数据，并能完成一定运...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Mar 01 2023 19:00:50 GMT+0800">
-                
-                    2023-03-01
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2023/03/01/%E7%89%A9%E7%90%86%E5%BC%95%E6%93%8E/">Read more<span class="seo-reader-text"></span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -750,6 +591,10 @@ array...
         
 
         
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
 
         <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
             <i class="fa-regular fa-arrow-down"></i>
@@ -760,11 +605,6 @@ array...
         <li class="right-bottom-tools toggle-tools-list flex-center">
             <i class="fa-regular fa-cog fa-spin"></i>
         </li>
-        
-            <li class="right-bottom-tools tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
         
     </ul>
 </div>
