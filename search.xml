@@ -3,12 +3,7 @@
   <entry>
     <title>NOJ DS G1:SeqList</title>
     <url>/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/</url>
-    <content><![CDATA[<h2 id="NOJ-DS-G1-SeqList"><a href="#NOJ-DS-G1-SeqList" class="headerlink" title="NOJ DS G1:SeqList"></a>NOJ DS G1:SeqList</h2><h3 id="G1-1"><a href="#G1-1" class="headerlink" title="G1.1"></a>G1.1</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213512918.png"
-                      alt="image-20230402213512918" style="zoom: 50%;" 
-                ><img  
+    <content><![CDATA[<h3 id="G1-1"><a href="#G1-1" class="headerlink" title="G1.1"></a>G1.1</h3><p>&lt;img src&#x3D;”D:\blog\source\images\noj_ds1.png” alt&#x3D;”image-20230402213512918” style&#x3D;”zoom: 50%;” &#x2F;<img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="C:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213624833.png"
@@ -22,6 +17,10 @@
       <categories>
         <category>NOJ DS Answers</category>
       </categories>
+      <tags>
+        <tag>NOJ</tag>
+        <tag>Data Structure</tag>
+      </tags>
   </entry>
   <entry>
     <title>我的第一篇博客文章</title>
