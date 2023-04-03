@@ -23,7 +23,7 @@
   --copyright-info-color: #c03;
   --avatar-background-color: #06c;
   --pjax-progress-bar-color: linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3);
-  --archive-timeline-last-child-color: linear-gradient(to bottom, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%) 1 100%;
+  --archive-timeline-last-child-color: linear-gradient(to bottom, #e8e8e8 60%, rgba(0,0,0,0) 100%) 1 100%;
   --note-blue-title-bg: #d6f7fb;
   --note-red-title-bg: #fde9e9;
   --note-cyan-title-bg: #e9fdf9;
@@ -69,7 +69,7 @@
     --copyright-info-color: #c03;
     --avatar-background-color: #06c;
     --pjax-progress-bar-color: linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3);
-    --archive-timeline-last-child-color: linear-gradient(to bottom, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%) 1 100%;
+    --archive-timeline-last-child-color: linear-gradient(to bottom, #e8e8e8 60%, rgba(0,0,0,0) 100%) 1 100%;
     --note-blue-title-bg: #d6f7fb;
     --note-red-title-bg: #fde9e9;
     --note-cyan-title-bg: #e9fdf9;
@@ -116,7 +116,7 @@
     --copyright-info-color: #a30029;
     --avatar-background-color: #005cb8;
     --pjax-progress-bar-color: linear-gradient(45deg, #ea404a, #ea722f, #e9a71f, #67e559, #18ecec, #1b85f1, #ee1dee);
-    --archive-timeline-last-child-color: linear-gradient(to bottom, rgba(180,180,180,0.3) 60%, rgba(255,255,255,0) 100%) 1 100%;
+    --archive-timeline-last-child-color: linear-gradient(to bottom, #323232 60%, rgba(255,255,255,0) 100%) 1 100%;
     --note-blue-title-bg: #1e3e46;
     --note-red-title-bg: #4e1e1e;
     --note-cyan-title-bg: #1e4e4e;
@@ -162,7 +162,7 @@
   --copyright-info-color: #c03;
   --avatar-background-color: #06c;
   --pjax-progress-bar-color: linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3);
-  --archive-timeline-last-child-color: linear-gradient(to bottom, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%) 1 100%;
+  --archive-timeline-last-child-color: linear-gradient(to bottom, #e8e8e8 60%, rgba(0,0,0,0) 100%) 1 100%;
   --note-blue-title-bg: #d6f7fb;
   --note-red-title-bg: #fde9e9;
   --note-cyan-title-bg: #e9fdf9;
@@ -207,7 +207,7 @@
   --copyright-info-color: #a30029;
   --avatar-background-color: #005cb8;
   --pjax-progress-bar-color: linear-gradient(45deg, #ea404a, #ea722f, #e9a71f, #67e559, #18ecec, #1b85f1, #ee1dee);
-  --archive-timeline-last-child-color: linear-gradient(to bottom, rgba(180,180,180,0.3) 60%, rgba(255,255,255,0) 100%) 1 100%;
+  --archive-timeline-last-child-color: linear-gradient(to bottom, #323232 60%, rgba(255,255,255,0) 100%) 1 100%;
   --note-blue-title-bg: #1e3e46;
   --note-red-title-bg: #4e1e1e;
   --note-cyan-title-bg: #1e4e4e;

@@ -2,75 +2,22 @@
 <search>
   <entry>
     <title></title>
-    <url>/2023/03/01/Oct%E9%9B%86%E8%AE%AD%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="day3笔记"><a href="#day3笔记" class="headerlink" title="day3笔记"></a>day3笔记</h3><ul>
-<li><strong>%d</strong> 十进制有符号整数</li>
-<li><strong>%u</strong> 十进制无符号整数</li>
-<li><strong>%f</strong> 浮点数</li>
-<li><strong>%lf</strong> double类型</li>
-<li><strong>%s</strong> 字符串</li>
-<li><strong>%c</strong> 单个字符</li>
-<li><strong>%p</strong> 指针的值</li>
-<li><strong>%e</strong> 指数形式的浮点数</li>
-<li><strong>%x, %X</strong> 无符号以十六进制表示的整数</li>
-<li><strong>%o</strong> 无符号以八进制表示的整数</li>
-<li><strong>%g</strong> 把输出的值按照 %e 或者 %f 类型中输出长度较小的方式输出</li>
-<li><strong>%p</strong> 输出地址符</li>
-<li><strong>%lu</strong> 32位无符号整数</li>
-<li><strong>%llu</strong> 64位无符号整数</li>
-<li>printf<code>函数的一个重要特性：**参数从后往前求值。** 即：</code>printf(“%u %u\n”, work1(), work2())<code>会先执行</code>work2()<code>再执行</code>work1()&#96;。</li>
-</ul>
-<h3 id="day4笔记"><a href="#day4笔记" class="headerlink" title="day4笔记"></a>day4笔记</h3><ul>
-<li>%02d %.2f</li>
-<li>pow(x,y) sqrt(x) fabs(x)  mode(,)涉及指针   ceil(), floor()</li>
-<li>注意大部分函数值必须为double类型（否则无意义），需要类型转换或者加*1.0</li>
-</ul>
-<h3 id="day5笔记"><a href="#day5笔记" class="headerlink" title="day5笔记"></a>day5笔记</h3><ul>
-<li><p>位运算（按二进制位展开）（长度不一样时按右端对齐）</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>描述</th>
-<th>运算规则</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&amp;</td>
-<td>与</td>
-<td>两个位都为1时，结果才为1</td>
-</tr>
-<tr>
-<td>&amp;#124;</td>
-<td>或</td>
-<td>两个位都为0时，结果才为0</td>
-</tr>
-<tr>
-<td>^</td>
-<td>异或</td>
-<td>两个位相同为0，相异为1（x^x&#x3D;0，x^0&#x3D;x），满足结合律，交换律；用于交换数字：x^1&#x3D;取反，x^0&#x3D;不变</td>
-</tr>
-<tr>
-<td>~</td>
-<td>取反</td>
-<td>0变1，1变0</td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>左移</td>
-<td>各二进位全部左移若干位，高位丢弃，低位补0</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>右移</td>
-<td>各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>负数补码：取反后+1，反之由补码得到负数为-1后取反</p>
-</li>
-</ul>
-<p>srand((unsigned)time(NULL));<br>array[]&#x3D;a+rand()%n</p>
+    <url>/2023/04/02/%5BNWPU%20Data%20Structure%20NOJ%20Practice%20Answers%5D%20by%20NPUIdler/</url>
+    <content><![CDATA[<h1 id="NWPU-Data-Structure-NOJ-Practice-Answers-by-NPUIdler"><a href="#NWPU-Data-Structure-NOJ-Practice-Answers-by-NPUIdler" class="headerlink" title="[NWPU Data Structure NOJ Practice Answers]	by NPUIdler"></a>[NWPU Data Structure NOJ Practice Answers]	by NPUIdler</h1><h2 id="G1-SeqList"><a href="#G1-SeqList" class="headerlink" title="G1: SeqList"></a>G1: SeqList</h2><h3 id="G1-1"><a href="#G1-1" class="headerlink" title="G1.1"></a>G1.1</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213512918.png"
+                      alt="image-20230402213512918" style="zoom: 50%;" 
+                ><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213624833.png"
+                      alt="image-20230402213624833" style="zoom: 50%;" 
+                ></p>
+<p>Simple question, using SeqList and its Insertion.</p>
+<p>The total code is down here:</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Language up to you; Personally use cpp more.</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">SeqList</span> &#123;</span><br><span class="line">    <span class="type">int</span> elenum;</span><br><span class="line">    <span class="type">int</span> list[MAXSIZE];</span><br><span class="line">&#125;SeqList, *pSeqList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Insert</span><span class="params">(<span class="type">int</span> x, pSeqList pl)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; pl-&gt;elenum; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &lt; pl-&gt;list[i]) &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = pl-&gt;elenum; j &gt; i; j--) &#123;</span><br><span class="line">                pl-&gt;list[j] = pl-&gt;list[j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            pl-&gt;list[i] = x;</span><br><span class="line">            pl-&gt;elenum++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SeqList L;</span><br><span class="line">    pSeqList pl = &amp;L;</span><br><span class="line">    <span class="type">int</span> x, i;</span><br><span class="line">    cin &gt;&gt; L.elenum ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; L.elenum; i++) &#123;</span><br><span class="line">        cin &gt;&gt; L.list[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="built_in">Insert</span>(x, pl);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; L.elenum; i++) &#123;</span><br><span class="line">        cout &lt;&lt; L.list[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 ]]></content>
   </entry>
   <entry>
@@ -682,31 +629,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2023/04/02/%5BNWPU%20Data%20Structure%20NOJ%20Practice%20Answers%5D%20by%20NPUIdler/</url>
-    <content><![CDATA[<h1 id="NWPU-Data-Structure-NOJ-Practice-Answers-by-NPUIdler"><a href="#NWPU-Data-Structure-NOJ-Practice-Answers-by-NPUIdler" class="headerlink" title="[NWPU Data Structure NOJ Practice Answers]	by NPUIdler"></a>[NWPU Data Structure NOJ Practice Answers]	by NPUIdler</h1><h2 id="G1-SeqList"><a href="#G1-SeqList" class="headerlink" title="G1: SeqList"></a>G1: SeqList</h2><h3 id="G1-1"><a href="#G1-1" class="headerlink" title="G1.1"></a>G1.1</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213512918.png"
-                      alt="image-20230402213512918" style="zoom: 50%;" 
-                ><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="C:\Users\csp\AppData\Roaming\Typora\typora-user-images\image-20230402213624833.png"
-                      alt="image-20230402213624833" style="zoom: 50%;" 
-                ></p>
-<p>Simple question, using SeqList and its Insertion.</p>
-<p>The total code is down here:</p>
-<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Language up to you; Personally use cpp more.</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">SeqList</span> &#123;</span><br><span class="line">    <span class="type">int</span> elenum;</span><br><span class="line">    <span class="type">int</span> list[MAXSIZE];</span><br><span class="line">&#125;SeqList, *pSeqList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Insert</span><span class="params">(<span class="type">int</span> x, pSeqList pl)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; pl-&gt;elenum; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &lt; pl-&gt;list[i]) &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = pl-&gt;elenum; j &gt; i; j--) &#123;</span><br><span class="line">                pl-&gt;list[j] = pl-&gt;list[j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            pl-&gt;list[i] = x;</span><br><span class="line">            pl-&gt;elenum++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SeqList L;</span><br><span class="line">    pSeqList pl = &amp;L;</span><br><span class="line">    <span class="type">int</span> x, i;</span><br><span class="line">    cin &gt;&gt; L.elenum ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; L.elenum; i++) &#123;</span><br><span class="line">        cin &gt;&gt; L.list[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="built_in">Insert</span>(x, pl);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; L.elenum; i++) &#123;</span><br><span class="line">        cout &lt;&lt; L.list[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>我的第一篇博客文章</title>
-    <url>/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>大学美育笔记</title>
     <url>/2023/03/01/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E8%82%B2%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="第一章-审美需要"><a href="#第一章-审美需要" class="headerlink" title="第一章 审美需要"></a>第一章 审美需要</h1><p>人的需要：生存需要（基本）、享受需要、发展需要（人的本质需要，一种永恒的精神性追求）。<br>快感：生存需要获得满足，就会产生快感，而物质享受便是生存需要的高级满足，所以必然会产生快感<br>审美需要本质上是一种精神、情感的享受需要。 </p>
@@ -800,5 +722,83 @@
 <p>在主循环中，我们先处理输入事件，然后清空屏幕，接着计算物体的运动状态，然后显示物体的状态，最后等待下一帧。注意，这个主循环会一直运行，直到程序被终止。</p>
 <p>以上就是一个简单的2D物理引擎的实现。在实际开发中，我们还可以添加更多的物理效果，比如摩擦力、空气阻力、弹性碰撞等等。同时，我们也可以使用更加高效的数值计算方法来提高引擎的性能，比如使用Verlet算法等。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/03/01/Oct%E9%9B%86%E8%AE%AD%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="day3笔记"><a href="#day3笔记" class="headerlink" title="day3笔记"></a>day3笔记</h3><ul>
+<li><strong>%d</strong> 十进制有符号整数</li>
+<li><strong>%u</strong> 十进制无符号整数</li>
+<li><strong>%f</strong> 浮点数</li>
+<li><strong>%lf</strong> double类型</li>
+<li><strong>%s</strong> 字符串</li>
+<li><strong>%c</strong> 单个字符</li>
+<li><strong>%p</strong> 指针的值</li>
+<li><strong>%e</strong> 指数形式的浮点数</li>
+<li><strong>%x, %X</strong> 无符号以十六进制表示的整数</li>
+<li><strong>%o</strong> 无符号以八进制表示的整数</li>
+<li><strong>%g</strong> 把输出的值按照 %e 或者 %f 类型中输出长度较小的方式输出</li>
+<li><strong>%p</strong> 输出地址符</li>
+<li><strong>%lu</strong> 32位无符号整数</li>
+<li><strong>%llu</strong> 64位无符号整数</li>
+<li>printf<code>函数的一个重要特性：**参数从后往前求值。** 即：</code>printf(“%u %u\n”, work1(), work2())<code>会先执行</code>work2()<code>再执行</code>work1()&#96;。</li>
+</ul>
+<h3 id="day4笔记"><a href="#day4笔记" class="headerlink" title="day4笔记"></a>day4笔记</h3><ul>
+<li>%02d %.2f</li>
+<li>pow(x,y) sqrt(x) fabs(x)  mode(,)涉及指针   ceil(), floor()</li>
+<li>注意大部分函数值必须为double类型（否则无意义），需要类型转换或者加*1.0</li>
+</ul>
+<h3 id="day5笔记"><a href="#day5笔记" class="headerlink" title="day5笔记"></a>day5笔记</h3><ul>
+<li><p>位运算（按二进制位展开）（长度不一样时按右端对齐）</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+<th>运算规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>与</td>
+<td>两个位都为1时，结果才为1</td>
+</tr>
+<tr>
+<td>&amp;#124;</td>
+<td>或</td>
+<td>两个位都为0时，结果才为0</td>
+</tr>
+<tr>
+<td>^</td>
+<td>异或</td>
+<td>两个位相同为0，相异为1（x^x&#x3D;0，x^0&#x3D;x），满足结合律，交换律；用于交换数字：x^1&#x3D;取反，x^0&#x3D;不变</td>
+</tr>
+<tr>
+<td>~</td>
+<td>取反</td>
+<td>0变1，1变0</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+<td>各二进位全部左移若干位，高位丢弃，低位补0</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+<td>各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>负数补码：取反后+1，反之由补码得到负数为-1后取反</p>
+</li>
+</ul>
+<p>srand((unsigned)time(NULL));<br>array[]&#x3D;a+rand()%n</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>我的第一篇博客文章</title>
+    <url>/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
