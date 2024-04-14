@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"deltar-3k.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="不再附每道题和答案，只记录易错和新的做法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NOJ C++ G3:enum 记录">
+<meta property="og:url" content="https://deltar-3k.github.io/2023/04/11/CppG3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="不再附每道题和答案，只记录易错和新的做法">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112102606.png">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112105861.png">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112109592.png">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112115180.png">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112119477.png">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112122207.png">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112124485.png">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112133893.png">
+<meta property="og:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112137235.png">
+<meta property="article:published_time" content="2023-04-11T14:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-14T07:17:54.729Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="NOJ">
+<meta property="article:tag" content="Cpp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112102606.png">
+
+
+<link rel="canonical" href="https://deltar-3k.github.io/2023/04/11/CppG3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://deltar-3k.github.io/2023/04/11/CppG3/","path":"2023/04/11/CppG3/","title":"NOJ C++ G3:enum 记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>NOJ C++ G3:enum 记录 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1"><span class="nav-number">1.</span> <span class="nav-text">3.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2"><span class="nav-number">2.</span> <span class="nav-text">3.2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3"><span class="nav-number">3.</span> <span class="nav-text">3.3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4"><span class="nav-number">4.</span> <span class="nav-text">3.4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5"><span class="nav-number">5.</span> <span class="nav-text">3.5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6"><span class="nav-number">6.</span> <span class="nav-text">3.6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7"><span class="nav-number">7.</span> <span class="nav-text">3.7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8"><span class="nav-number">8.</span> <span class="nav-text">3.8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9"><span class="nav-number">9.</span> <span class="nav-text">3.9</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-10"><span class="nav-number">10.</span> <span class="nav-text">3.10</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/04/11/CppG3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="NOJ C++ G3:enum 记录 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NOJ C++ G3:enum 记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-11 22:00:00" itemprop="dateCreated datePublished" datetime="2023-04-11T22:00:00+08:00">2023-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-04-14 15:17:54" itemprop="dateModified" datetime="2024-04-14T15:17:54+08:00">2024-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NOJ-Cpp/" itemprop="url" rel="index"><span itemprop="name">NOJ Cpp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><ul>
+<li><h3 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112102606.png" alt="image-20230411210203587"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; t; i++)&#123;</span><br><span class="line">        <span class="type">int</span> temp = alpha;</span><br><span class="line">        alpha = beta;</span><br><span class="line">        beta = <span class="number">3</span>* temp + <span class="number">2</span>* beta;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//两个变量都需要依赖对方的初始值变化时，加上temp</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112105861.png" alt="image-20230411210511840"></p>
+<p>这题枚举不是很好想，用递归会简单一些</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">measures</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">3</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">4</span>) <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*<span class="built_in">measures</span>(n<span class="number">-1</span>) + <span class="built_in">pow</span>(<span class="number">2</span>,n<span class="number">-4</span>) - <span class="built_in">measures</span>(n<span class="number">-4</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//本身没有太多要注意的，pow函数接受传入时会自动转化为小数，注意有些题里的精度问题</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112109592.png" alt="image-20230411210927571"></p>
+<ul>
+<li>循环时：对于只需<code>单次</code>满足<code>判断结果</code>的情况要<code>break</code></li>
+<li><code>嵌套循环</code>中要使用<code>上层</code>循环变量，且上层变量不应改变时，用<code>temp</code></li>
+</ul>
+<h3 id="3-4"><a href="#3-4" class="headerlink" title="3.4"></a>3.4</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112115180.png" alt="image-20230411211552157"></p>
+<ul>
+<li>数据陷阱：<code>1.0/(i*i)</code>会出现精度问题,原因是直接计算<code> i*i</code> 会溢出或者太小，应该用<code>(1.0/i)*(1.0/i)</code></li>
+<li>保留小数时注意用<code>fixed</code>，保留有效数字时不用加</li>
+</ul>
+<h3 id="3-5"><a href="#3-5" class="headerlink" title="3.5"></a>3.5</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112119477.png" alt="image-20230411211927458"></p>
+<ul>
+<li>数据陷阱：分数太小时double的精度不够</li>
+<li>解决方法：模拟手算，不断除余数</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> a, b, c;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">    cout &lt;&lt; a/b &lt;&lt; <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;c; i++)&#123;</span><br><span class="line">        a = a%b*<span class="number">10</span>;</span><br><span class="line">        cout &lt;&lt; a/b;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6"><a href="#3-6" class="headerlink" title="3.6"></a>3.6</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112122207.png" alt="image-20230411212217181"></p>
+<ul>
+<li>新：用<code>STL</code>的<code>next_permutation(a,a+n)</code>，要包括<code>&lt;algorithm&gt;</code>的头文件</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> nums[<span class="number">9</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="type">int</span> a = nums[<span class="number">0</span>]*<span class="number">100</span> + nums[<span class="number">1</span>]*<span class="number">10</span> + nums[<span class="number">2</span>];</span><br><span class="line">        <span class="type">int</span> b = nums[<span class="number">3</span>]*<span class="number">100</span> + nums[<span class="number">4</span>]*<span class="number">10</span> + nums[<span class="number">5</span>];</span><br><span class="line">        <span class="type">int</span> c = nums[<span class="number">6</span>]*<span class="number">100</span> + nums[<span class="number">7</span>]*<span class="number">10</span> + nums[<span class="number">8</span>];</span><br><span class="line">        <span class="keyword">if</span>(a*<span class="number">2</span> == b &amp;&amp; a*<span class="number">3</span> == c)&#123;</span><br><span class="line">            cout &lt;&lt; a &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; b &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">next_permutation</span>(nums, nums+<span class="number">9</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7"><a href="#3-7" class="headerlink" title="3.7"></a>3.7</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112124485.png" alt="image-20230411212418465"></p>
+<ul>
+<li>注意有些<code>固定算子</code>在每次循环前或后要重新赋为初始值，比如获得多个<code>sum</code>和<code>prod</code></li>
+<li>思考方式：要多用封装好的函数，减少底层逻辑思考，直接思考框架，如此题在遍历中用<code>max</code>，省去<code>if</code></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, prod=<span class="number">1</span>, ans;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> S[n], max1[n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        cin &gt;&gt; S[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*方法一：定义记录某元素为起始的所有连续子列乘积最大值的数组，再依次比较最大值</span></span><br><span class="line"><span class="comment">    for(int i=0; i&lt;n; i++)&#123;</span></span><br><span class="line"><span class="comment">        max1[i] = S[i]; //初始化max1[i]      </span></span><br><span class="line"><span class="comment">        for(int j=i; j&lt;n; j++)&#123;</span></span><br><span class="line"><span class="comment">            prod *= S[j]; //得到i开头的所有的连续子列乘积</span></span><br><span class="line"><span class="comment">            max1[i] = max(max1[i], prod); //不断更新max1[i]           </span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        prod = 1; //每次都要重新赋值为1           </span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法二：换算法，考虑到负数，记录以某元素结尾的子列的最大乘积和最小乘积</span></span><br><span class="line">    <span class="comment">//并不断比较得出新的最大积和最小积，新的最大积和最小积由5个可能的值通过max/min产生</span></span><br><span class="line">    <span class="comment">//省去了正负的判断，全用max代替，代码更简洁</span></span><br><span class="line">    <span class="comment">//同时可应对变式：非连续子列的最大积</span></span><br><span class="line">    <span class="type">int</span> maxProd = S[<span class="number">0</span>], minProd = S[<span class="number">0</span>], ans = S[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="type">int</span> a = S[i] * maxProd, b = S[i] * minProd;</span><br><span class="line">        maxProd = <span class="built_in">max</span>(S[i], <span class="built_in">max</span>(a, b));</span><br><span class="line">        <span class="comment">//变式：maxProd = max(max(max(S[i], max(a, b)),maxProd),minProd); </span></span><br><span class="line">        minProd = <span class="built_in">min</span>(S[i], <span class="built_in">min</span>(a, b));</span><br><span class="line">        <span class="comment">//变式：minProd = min(min(min(S[i], min(a, b)),maxProd),minProd);</span></span><br><span class="line">        ans = <span class="built_in">max</span>(ans, maxProd);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ans &gt; <span class="number">0</span>) cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-8"><a href="#3-8" class="headerlink" title="3.8"></a>3.8</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112133893.png" alt="image-20230411213326869"></p>
+<ul>
+<li>英文：分子<code>numerator</code>，分母：<code>denominator</code></li>
+<li>循环多且相互联系时，要注意彼此的<code>边界</code>，最好在写之前确定</li>
+</ul>
+<h3 id="3-9"><a href="#3-9" class="headerlink" title="3.9"></a>3.9</h3><p><img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112137235.png" alt="image-20230411213753211"></p>
+<ul>
+<li>注意一下条件为<code>&lt;=</code>的<code>for循环</code>结束时<code>i</code>的值为<code>最大值+1</code></li>
+</ul>
+<h3 id="3-10"><a href="#3-10" class="headerlink" title="3.10"></a>3.10</h3><ul>
+<li>没啥好说的(<em>^▽^</em>)</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/NOJ/" rel="tag"># NOJ</a>
+              <a href="/tags/Cpp/" rel="tag"># Cpp</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/07/NJU%20OOP%E4%B8%89%E9%81%93%E5%A5%BD%E9%A2%98/" rel="prev" title="NJU OOP三道好题">
+                  <i class="fa fa-angle-left"></i> NJU OOP三道好题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/04/18/CppG4%E5%87%BD%E6%95%B0/" rel="next" title="NOJ C++ G4:func 记录">
+                  NOJ C++ G4:func 记录 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,1443 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="Hexo Theme Redefine">
-    
-    <meta name="author" content="deltaR">
-    <!-- preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
 
-    
-    <!--- Seo Part-->
-    
-    <link rel="canonical" href="http://example.com/"/>
-    <meta name="robots" content="index,follow">
-    <meta name="googlebot" content="index,follow">
-    <meta name="revisit-after" content="1 days">
-    
-        <meta property="og:type" content="website">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"deltar-3k.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="https://deltar-3k.github.io/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-    
-    
-    <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/images/hexo0.png" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/hexo0.png">
-    <meta name="theme-color" content="#005080">
-    <link rel="shortcut icon" href="/images/hexo0.png">
-    <!--- Page Info-->
-    
-    <title>
-        
-        NPU-IdlingLand
-    </title>
-
-    
-<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
 
 
-    <!--- Inject Part-->
-    
-
-    
-        <style>
-    :root {
-        --preloader-background-color: #fff;
-        --preloader-text-color: #000;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --preloader-background-color: #202124;
-            --preloader-text-color: #fff;
-        }
-    }
-
-    @media (prefers-color-scheme: light) {
-        :root {
-            --preloader-background-color: #fff;
-            --preloader-text-color: #000;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .ml13 {
-            font-size: 2.6rem !important; /* Adjust this value as needed */
-        }
-    }
-
-    .preloader {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        padding: 12px;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh; /* 'h-screen' is 100% of the viewport height */
-        background-color: var(--preloader-background-color);
-        z-index: 1100; /* 'z-[1100]' sets the z-index */
-        transition: opacity 0.2s ease-in-out;
-    }
-
-    .ml13 {
-        font-size: 3.2rem;
-        /* text-transform: uppercase; */
-        color: var(--preloader-text-color);
-        letter-spacing: -1px;
-        font-weight: 500;
-        font-family: 'Chillax-Variable', sans-serif;
-        text-align: center;
-    }
-
-    .ml13 .word {
-        display: inline-flex;
-        flex-wrap: wrap;
-        white-space: nowrap;
-    }
-
-    .ml13 .letter {
-        display: inline-block;
-        line-height: 1em;
-    }
-</style>
-
-<div class="preloader">
-    
-<script src="/js/libs/anime.min.js"></script>
-
-    <h1 class="ml13">
-        NPU-IdlingLand
-    </h1>
-    <script>
-        var textWrapper = document.querySelector('.ml13');
-        // Split text into words
-        var words = textWrapper.textContent.trim().split(' ');
-
-        // Clear the existing content
-        textWrapper.innerHTML = '';
-
-        // Wrap each word and its letters in spans
-        words.forEach(function(word) {
-            var wordSpan = document.createElement('span');
-            wordSpan.classList.add('word');
-            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
-            textWrapper.appendChild(wordSpan);
-            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
-        });
+<link rel="canonical" href="https://deltar-3k.github.io/">
 
 
-        anime.timeline({loop: true})
-            .add({
-                targets: '.ml13 .letter',
-                translateY: [100,0],
-                translateZ: 0,
-                opacity: [0,1],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 300 + 30 * i
-            }).add({
-            targets: '.ml13 .letter',
-            translateY: [0,-100],
-            opacity: [1,0],
-            easing: "easeInExpo",
-            duration: 1200,
-            delay: (el, i) => 100 + 30 * i
-        });
 
-        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
 
-        // If the theme status is not found in local storage, check the preferred color scheme
-        if (themeStatus === undefined || themeStatus === null) {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                themeStatus = 'dark';
-            } else {
-                themeStatus = 'light';
-            }
-        }
-
-        // Now you can use the themeStatus variable in your code
-        if (themeStatus) {
-            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
-            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
-        } else {
-            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
-            document.documentElement.style.setProperty('--preloader-text-color', '#000');
-        }
-
-        window.addEventListener('load', function () {
-            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
-        });
-
-        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
-        hidePreloaderAfterTimeout(5000);
-
-        function hidePreloaderAfterTimeout(delay) {
-            setTimeout(function () {
-                var preloader = document.querySelector('.preloader');
-                preloader.style.opacity = '0';
-                setTimeout(function () {
-                    preloader.style.display = 'none';
-                }, 200);
-            }, delay);
-        }
-    </script>
-</div>
-    
-
-    
-<link rel="stylesheet" href="/css/style.css">
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hexo</title>
+  
 
 
-    
-        
-<link rel="stylesheet" href="/assets/build/styles.css">
-
-    
-
-    
-<link rel="stylesheet" href="/fonts/fonts.css">
-
-    
-<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
-
-    <!--- Font Part-->
-    
-    
-    
-    
 
 
-    <script id="hexo-configurations">
-    window.config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#005080","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Boy who fiddles Big toys","subtitle":{"text":["WELCOME to Myland"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/deltaR-3k","instagram":null,"zhihu":null,"twitter":null,"email":"deltaR_chen@outlook.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/deltaR-3k","Blog":"deltar.top","Friends":"/friends"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"Welcome to my new blog! Stay tuned for exciting updates.","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2023/4/20 17:00:00"};
-    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
-    window.data = {"masonry":false};
-  </script>
-    
-    <!--- Fontawesome Part-->
-    
-<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/brands.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/solid.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/regular.min.css">
-
-    
-    
-    
-    
-<meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<body>
-<div class="progress-bar-container">
-    
-
-    
-        <span class="pjax-progress-bar"></span>
-<!--        <span class="swup-progress-icon">-->
-<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
-<!--        </span>-->
-    
-</div>
 
 
-<main class="page-container" id="swup">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
 
-    
-        
-    <style>
-        .home-banner-container {
-            background: none !important;
-        }
-        .home-article-item,
-        .sidebar-links,
-        .sidebar-content,
-        a.page-number,
-        a.extend,
-        .sidebar-links .links:hover,
-        .right-bottom-tools,
-        footer.footer {
-            background-color: var(--background-color-transparent-80) !important;
-        }
-        .right-bottom-tools:hover,
-        a.page-number:hover,
-        a.extend:hover {
-            background-color: var(--primary-color) !important;
-        }
-        .site-info,
-        .home-article-sticky-label {
-            background-color: var(--background-color-transparent-15) !important;
-        }
-        .home-article-sticky-label {
-            backdrop-filter: none !important;
-        }
-    </style>
-    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-        <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-        <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
+  </div>
 
+  <div class="site-meta">
 
-<div class="home-banner-container flex justify-center items-center transition-fade relative">
-    
-    <div class="content mt-8 flex flex-col justify-center items-center">
-        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
-        
-        >
-            Boy who fiddles Big toys
-            
-            
-                <p><i id="subtitle"></i></p>
-            
-        </div>
-        
-            
-            <div class="absolute bottom-0.5 flex flex-row justify-between max-w-[1340px] items-center w-full px-8 sm:px-12">
-                <div class="flex p-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 group rounded-full cursor-pointer flex justify-center items-center aspect-square h-full shadow-redefine-flat hover:shadow-redefine-flat-hover transition-shadow" onclick="scrollToMain()" >
-                    <i class="fa-solid fa-arrow-down fa-fw fa-lg group-hover:translate-y-1 transition-transform"></i>
-                </div>
-                <div class="social-contacts px-6 py-3 bg-gray-300/50 dark:bg-gray-500/40 backdrop-blur-lg border border-white/20 dark:border-gray-500/30 shadow-redefine-flat rounded-full flex flex-row gap-3 items-center">
-                    
-                        
-                            
-                                <span class="social-contact-item github">
-                                    <a target="_blank" href="https://github.com/deltaR-3k">
-                                        <i class="fa-brands fa-fw fa-lg fa-github"></i>
-                                    </a>
-                                </span>
-                            
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                            
-                                <span class="social-contact-item email ">
-                                    <a href="mailto:deltaR_chen@outlook.com">
-                                        <i class="fa-solid fa-fw fa-at fa-lg"></i>
-                                    </a>
-                                </span>
-                            
-                        
-                    
-                    
-                </div>
-            </div>
-        
-    </div>
-    <script>
-        const scrollToMain = ()=> {
-            console.log('scroll');
-            const target = document.querySelector('.main-content-container');
-            target.scrollIntoView({ behavior: 'smooth'});
-        }
-    </script>
-</div>
-    
-
-    <div class="main-content-container">
-
-
-        <div class="main-content-header">
-            <header class="navbar-container px-6 md:px-12">
-
-    <div class="navbar-content has-home-banner">
-        <div class="left">
-            
-                <a class="logo-image" href="/">
-                    <img src="/images/up.png">
-                </a>
-            
-            <a class="logo-title" href="/">
-                <h1>
-                NPU-IdlingLand
-                </h1>
-            </a>
-        </div>
-
-        <div class="right">
-            <!-- PC -->
-            <div class="desktop">
-                <ul class="navbar-list">
-                    
-                        
-                            
-
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="active"
-                                   href="/"
-                                        >
-                                    <i class="fa-regular fa-house fa-fw"></i>
-                                    HOME
-                                    
-                                </a>
-
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            
-
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="has-dropdown"
-                                   href="#"
-                                        onClick=&#34;return false;&#34;>
-                                    <i class="fa-regular fa-user fa-fw"></i>
-                                    ABOUT
-                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
-                                </a>
-
-                                <!-- Submenu -->
-                                
-                                    <ul class="sub-menu">
-                                        
-                                            <li>
-                                                <a href="/about">
-                                                    ME
-                                                </a>
-                                            </li>
-                                        
-                                            <li>
-                                                <a target="_blank" rel="noopener" href="https://github.com/deltaR-3k">
-                                                    GITHUB
-                                                </a>
-                                            </li>
-                                        
-                                            <li>
-                                                <a href="/deltar.top">
-                                                    BLOG
-                                                </a>
-                                            </li>
-                                        
-                                            <li>
-                                                <a href="/friends">
-                                                    FRIENDS
-                                                </a>
-                                            </li>
-                                        
-                                    </ul>
-                                
-                            </li>
-                    
-                    
-                        <li class="navbar-item search search-popup-trigger">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </li>
-                    
-                </ul>
-            </div>
-            <!-- Mobile -->
-            <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                
-                <div class="icon-item navbar-bar">
-                    <div class="navbar-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile sheet -->
-    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
-        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
-            
-                
-                    
-
-                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
-                           href="/"
-                        >
-                            <span>
-                                HOME
-                            </span>
-                            
-                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
-                            
-                        </a>
-                        
-
-                        
-                    </li>
-            
-                
-                    
-
-                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
-                        
-                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
-                             navbar-data-toggle="submenu-About"
-                        >
-                            <span>
-                                ABOUT
-                            </span>
-                            
-                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
-                            
-                        </div>
-                        
-
-                        
-                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
-                                
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                        <a class=" text-third-text-color text-xl"
-                                           href="/about">ME</a>
-                                    </div>
-                                
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                        <a class=" text-third-text-color text-xl"
-                                           target="_blank" rel="noopener" href="https://github.com/deltaR-3k">GITHUB</a>
-                                    </div>
-                                
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                        <a class=" text-third-text-color text-xl"
-                                           href="/deltar.top">BLOG</a>
-                                    </div>
-                                
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                        <a class=" text-third-text-color text-xl"
-                                           href="/friends">FRIENDS</a>
-                                    </div>
-                                
-                            </div>
-                        
-                    </li>
-            
-
-            
-            
-        </ul>
-
-        <div class="statistics flex justify-around my-2.5">
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
-        <div class="label text-third-text-color text-sm">Tags</div>
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
     </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
-        <div class="label text-third-text-color text-sm">Categories</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
-        <div class="label text-third-text-color text-sm">Posts</div>
-    </a>
-</div>
-    </div>
+  </div>
 
-    <div class="window-mask"></div>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 </header>
-
-
-        </div>
-
-        <div class="main-content-body">
-
-            
-                <div class="home-sidebar-container">
-    <div class="sticky-container sticky">
         
-        
-            
-                <div class="sidebar-links">
-                    <div class="site-info">
-                        <div class="site-name">NPU-IdlingLand</div>
-                        
-                    </div>
-                    
-                        <div class="announcement-outside">
-                            Welcome to my new blog! Stay tuned for exciting updates.
-                        </div>
-                    
-                </div>
-            
-            <div class="sidebar-content"  marginTop >
-                <div class="avatar flex justify-center">
-    <img src="/images/hexo0.png">
-</div>
-                <div class="author flex flex-col justify-center my-2.5 mx-0">
-    <div class="name">deltaR</div>
-    
-        <div class="label">Lv2</div>
-    
-</div>
-                <div class="statistics flex justify-around my-2.5">
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
-        <div class="label text-third-text-color text-sm">Tags</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
-        <div class="label text-third-text-color text-sm">Categories</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
-        <div class="label text-third-text-color text-sm">Posts</div>
-    </a>
-</div>
-            </div>
-        
-
-    </div>
-</div>
-
-            
-
-            <div class="main-content">
-
-                
-                    <div class="home-content-container">
-    <ul class="home-article-list">
-        
-            <li class="home-article-item">
-
-                
-                    <div class="absolute top-[12px] right-[12px] text-[0.7rem] text-third-text-color rounded-medium bg-background-color-transparent-15 py-[2px] px-[10px] border border-border-color z-1 hover:text-first-text-color cursor-default">
-                        <i class="fa-regular fa-thumbtack mr-[3px] text-[0.65rem]"></i>Sticky
-                    </div>
-                
-
-                
-                    
-                
-
-                
-                    <div id="home-article-thumbnail" class="home-article-thumbnail relative h-[150px] overflow-hidden rounded-t-large">
-                        <a href="/2023/04/07/NJU%20OOP%E4%B8%89%E9%81%93%E5%A5%BD%E9%A2%98/">
-                            <img src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304072059086.jpeg" alt="NJU OOP三道好题" class="w-full h-full object-cover dark:brightness-75 transition-all" />
-                        </a>
-                    </div>
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-5">
-                    <h3 class="home-article-title">
-                        <a href="/2023/04/07/NJU%20OOP%E4%B8%89%E9%81%93%E5%A5%BD%E9%A2%98/">
-                            NJU OOP三道好题
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            <p>几道NJU同学分享的OOP好题，关于智能指针，迭代器和一个有趣的植物类</p>
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Apr 07 2023 20:41:00 GMT+0800">
-                
-                    2023-04-07
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/NJU%E5%A5%BD%E9%A2%98/">NJU好题</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/NJU/">NJU</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/OOP/">OOP</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/04/07/NJU%20OOP%E4%B8%89%E9%81%93%E5%A5%BD%E9%A2%98/">Read more<span class="seo-reader-text">NJU OOP三道好题</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/04/18/CppG4%E5%87%BD%E6%95%B0/">
-                            NOJ C++ G4:func 记录
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            <p>不再附每道题和答案，只记录易错和新的做法</p>
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Apr 18 2023 12:00:00 GMT+0800">
-                
-                    2023-04-18
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/NOJ-Cpp/">NOJ Cpp</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/NOJ/">NOJ</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Cpp/">Cpp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/04/18/CppG4%E5%87%BD%E6%95%B0/">Read more<span class="seo-reader-text">NOJ C++ G4:func 记录</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/04/11/CppG3/">
-                            NOJ C++ G3:enum 记录
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            <p>不再附每道题和答案，只记录易错和新的做法</p>
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Apr 11 2023 22:00:00 GMT+0800">
-                
-                    2023-04-11
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/NOJ-Cpp/">NOJ Cpp</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/NOJ/">NOJ</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Cpp/">Cpp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/04/11/CppG3/">Read more<span class="seo-reader-text">NOJ C++ G3:enum 记录</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/04/06/DS-HW-Chap3/">
-                            DS-HW-Chap3
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Apr 06 2023 23:45:18 GMT+0800">
-                
-                    2023-04-06
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/DS-HW/">DS HW</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/DataStructure/">DataStructure</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/HW/">HW</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/04/06/DS-HW-Chap3/">Read more<span class="seo-reader-text">DS-HW-Chap3</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/04/04/NWPU-Cpp-OJ-Practice-Answers/">
-                            NOJ Cpp G2:Loop
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Apr 04 2023 16:34:11 GMT+0800">
-                
-                    2023-04-04
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/NOJ-Cpp/">NOJ Cpp</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/NOJ/">NOJ</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Cpp/">Cpp</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/04/04/NWPU-Cpp-OJ-Practice-Answers/">Read more<span class="seo-reader-text">NOJ Cpp G2:Loop</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/">
-                            NOJ DS G1:SeqList
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Apr 03 2023 23:00:00 GMT+0800">
-                
-                    2023-04-03
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/NOJ-DS-Answers/">NOJ DS Answers</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/NOJ/">NOJ</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Data-Structure/">Data Structure</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/">Read more<span class="seo-reader-text">NOJ DS G1:SeqList</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/03/01/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E8%82%B2%E7%AC%94%E8%AE%B0/">
-                            大学美育笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Mar 01 2023 19:09:41 GMT+0800">
-                
-                    2023-03-01
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%B0%B4%E8%AF%BE%E7%AC%94%E8%AE%B0/">水课笔记</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/03/01/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E8%82%B2%E7%AC%94%E8%AE%B0/">Read more<span class="seo-reader-text">大学美育笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">
-                            我的第一篇博客文章
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Mar 01 2023 16:25:31 GMT+0800">
-                
-                    2023-03-01
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">Read more<span class="seo-reader-text">我的第一篇博客文章</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-    </ul>
-
-    <div class="home-paginator px-7 py-5">
-        <div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-
-    </div>
-</div>
-
-                    <div class="comment-container pjax"></div>
-                
-
-            </div>
-
-            
-
-        </div>
-
-        <div class="main-content-footer">
-            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
-    <div class="info-container py-3 text-center">
-        
-        <div class="text-center">
-            &copy;
-            
-              <span>2023</span>
-              -
-            
-            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">deltaR</a>
-            
-                
-                <p class="post-count space-x-0.5">
-                    <span>
-                        8 posts in total
-                    </span>
-                    
-                        <span>
-                            13.7k words in total
-                        </span>
-                    
-                </p>
-            
-        </div>
-        
-            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
-            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
-                
-                    <span id="busuanzi_container_site_uv" class="lg:!block">
-                        <span class="text-sm">VISITOR COUNT</span>
-                        <span id="busuanzi_value_site_uv"></span>
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv" class="lg:!block">
-                        <span class="text-sm">TOTAL PAGE VIEWS</span>
-                        <span id="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
-        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
-            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
-            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
-        </div>
-        
-        
-            <div>
-                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
-            </div>
-        
-        
-            <script data-swup-reload-script>
-                try {
-                    function odometer_init() {
-                    const elements = document.querySelectorAll('.odometer');
-                    elements.forEach(el => {
-                        new Odometer({
-                            el,
-                            format: '( ddd).dd',
-                            duration: 200
-                        });
-                    });
-                    }
-                    odometer_init();
-                } catch (error) {}
-            </script>
-        
-        
-        
-    </div>  
-</footer>
-        </div>
-    </div>
-
-    
-
-    <div class="right-side-tools-container">
-        <div class="side-tools-container">
-    <ul class="hidden-tools-list">
-        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
-            <i class="fa-regular fa-magnifying-glass-plus"></i>
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-
-        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
-            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
+      </ul>
 
-        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
-            <i class="fa-regular fa-moon"></i>
-        </li>
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
 
-        <!-- rss -->
-        
-
-        
-            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
-                <i class="fa-regular fa-arrow-up"></i>
-            </li>
-        
-
-        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
-            <i class="fa-regular fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="visible-tools-list">
-        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
-            <i class="fa-regular fa-cog fa-spin"></i>
-        </li>
-        
-        
-    </ul>
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
 
     </div>
 
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
+    <div class="main-inner index posts-expand">
 
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fa-solid fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fa-solid fa-times"></i>
-            </span>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/04/07/NJU%20OOP%E4%B8%89%E9%81%93%E5%A5%BD%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+              <span class="post-sticky-flag" title="Sticky">
+                <i class="fa fa-thumbtack"></i>
+              </span><a href="/2023/04/07/NJU%20OOP%E4%B8%89%E9%81%93%E5%A5%BD%E9%A2%98/" class="post-title-link" itemprop="url">NJU OOP三道好题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-07 20:41:00" itemprop="dateCreated datePublished" datetime="2023-04-07T20:41:00+08:00">2023-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-04-14 15:17:54" itemprop="dateModified" datetime="2024-04-14T15:17:54+08:00">2024-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NJU%E5%A5%BD%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">NJU好题</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
         </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          几道NJU同学分享的OOP好题，关于智能指针，迭代器和一个有趣的植物类
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/04/07/NJU%20OOP%E4%B8%89%E9%81%93%E5%A5%BD%E9%A2%98/#more" rel="contents">
+                Read more &raquo;
+              </a>
             </div>
-        </div>
+          <!--/noindex-->
+        
+      
     </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 </div>
 
-    
-
-</main>
-
-
-    
-<script src="/js/libs/Swup.min.js"></script>
-
-<script src="/js/libs/SwupSlideTheme.min.js"></script>
-
-<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
-
-<script src="/js/libs/SwupProgressPlugin.min.js"></script>
-
-<script src="/js/libs/SwupScrollPlugin.min.js"></script>
-
-<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
-
-<script>
-    const swup = new Swup({
-        plugins: [
-            new SwupScriptsPlugin({
-                optin: true,
-            }),
-            new SwupProgressPlugin(),
-            new SwupScrollPlugin({
-                offset: 80,
-            }),
-            new SwupSlideTheme({
-                mainElement: ".main-content-body",
-            }),
-            new SwupPreloadPlugin(),
-        ],
-        containers: ["#swup"],
-    });
-</script>
-
-
-
-
-
-
-
-
-<script src="/js/tools/imageViewer.js" type="module"></script>
-
-<script src="/js/utils.js" type="module"></script>
-
-<script src="/js/main.js" type="module"></script>
-
-<script src="/js/layouts/navbarShrink.js" type="module"></script>
-
-<script src="/js/tools/scrollTopBottom.js" type="module"></script>
-
-<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
-
-<script src="/js/layouts/categoryList.js" type="module"></script>
 
 
 
     
-<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/04/18/CppG4%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/18/CppG4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">NOJ C++ G4:func 记录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-18 12:00:00" itemprop="dateCreated datePublished" datetime="2023-04-18T12:00:00+08:00">2023-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-04-14 15:17:54" itemprop="dateModified" datetime="2024-04-14T15:17:54+08:00">2024-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NOJ-Cpp/" itemprop="url" rel="index"><span itemprop="name">NOJ Cpp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          不再附每道题和答案，只记录易错和新的做法
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/04/18/CppG4%E5%87%BD%E6%95%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
 
 
 
 
     
-<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/04/11/CppG3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/11/CppG3/" class="post-title-link" itemprop="url">NOJ C++ G3:enum 记录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-11 22:00:00" itemprop="dateCreated datePublished" datetime="2023-04-11T22:00:00+08:00">2023-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-04-14 15:17:54" itemprop="dateModified" datetime="2024-04-14T15:17:54+08:00">2024-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NOJ-Cpp/" itemprop="url" rel="index"><span itemprop="name">NOJ Cpp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          不再附每道题和答案，只记录易错和新的做法
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/04/11/CppG3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
 
 
 
 
     
-<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/04/06/DS-HW-Chap3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/06/DS-HW-Chap3/" class="post-title-link" itemprop="url">DS-HW-Chap3</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-06 23:45:18" itemprop="dateCreated datePublished" datetime="2023-04-06T23:45:18+08:00">2023-04-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-11 22:20:19" itemprop="dateModified" datetime="2023-04-11T22:20:19+08:00">2023-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DS-HW/" itemprop="url" rel="index"><span itemprop="name">DS HW</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          false
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/04/06/DS-HW-Chap3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
 
 
 
 
     
-<script src="/js/tools/runtime.js"></script>
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/04/04/NWPU-Cpp-OJ-Practice-Answers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/04/NWPU-Cpp-OJ-Practice-Answers/" class="post-title-link" itemprop="url">NOJ Cpp G2:Loop</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-04 16:34:11" itemprop="dateCreated datePublished" datetime="2023-04-04T16:34:11+08:00">2023-04-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-04-14 15:17:54" itemprop="dateModified" datetime="2024-04-14T15:17:54+08:00">2024-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NOJ-Cpp/" itemprop="url" rel="index"><span itemprop="name">NOJ Cpp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
 
     
-<script src="/js/libs/odometer.min.js"></script>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          false
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/04/04/NWPU-Cpp-OJ-Practice-Answers/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
     
-<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/" class="post-title-link" itemprop="url">NOJ DS G1:SeqList</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-03 23:00:00" itemprop="dateCreated datePublished" datetime="2023-04-03T23:00:00+08:00">2023-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-04-14 15:17:54" itemprop="dateModified" datetime="2024-04-14T15:17:54+08:00">2024-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NOJ-DS-Answers/" itemprop="url" rel="index"><span itemprop="name">NOJ DS Answers</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          false
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/03/01/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E8%82%B2%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/03/01/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E8%82%B2%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">大学美育笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-01 19:09:41" itemprop="dateCreated datePublished" datetime="2023-03-01T19:09:41+08:00">2023-03-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-03 17:57:30" itemprop="dateModified" datetime="2023-04-03T17:57:30+08:00">2023-04-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          false
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/03/01/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E8%82%B2%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://deltar-3k.github.io/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">我的第一篇博客文章</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-01 16:25:31" itemprop="dateCreated datePublished" datetime="2023-03-01T16:25:31+08:00">2023-03-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
 
 
 
 
   
-<script src="/js/libs/Typed.min.js"></script>
-
-  
-<script src="/js/plugins/typed.js" type="module"></script>
 
 
 
-
-
-
-
-
-
-<div class="post-scripts" data-swup-reload-script>
-    
-        
-<script src="/js/tools/tocToggle.js" type="module"></script>
-
-<script src="/js/layouts/toc.js" type="module"></script>
-
-<script src="/js/plugins/tabs.js" type="module"></script>
-
-    
-</div>
 
 
 </body>
