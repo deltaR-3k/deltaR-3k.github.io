@@ -1,10 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>NOJ C++ G3:enum 记录</title>
+    <url>/2023/04/11/CppG3/</url>
+    <content><![CDATA[<ul>
+<li><h3 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112102606.png"
+                      alt="image-20230411210203587"
+                ></p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; t; i++)&#123;</span><br><span class="line">        <span class="type">int</span> temp = alpha;</span><br><span class="line">        alpha = beta;</span><br><span class="line">        beta = <span class="number">3</span>* temp + <span class="number">2</span>* beta;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//两个变量都需要依赖对方的初始值变化时，加上temp</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112105861.png"
+                      alt="image-20230411210511840"
+                ></p>
+<p>这题枚举不是很好想，用递归会简单一些</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">measures</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">3</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">4</span>) <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*<span class="built_in">measures</span>(n<span class="number">-1</span>) + <span class="built_in">pow</span>(<span class="number">2</span>,n<span class="number">-4</span>) - <span class="built_in">measures</span>(n<span class="number">-4</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//本身没有太多要注意的，pow函数接受传入时会自动转化为小数，注意有些题里的精度问题</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112109592.png"
+                      alt="image-20230411210927571"
+                ></p>
+<ul>
+<li>循环时：对于只需<code>单次</code>满足<code>判断结果</code>的情况要<code>break</code></li>
+<li><code>嵌套循环</code>中要使用<code>上层</code>循环变量，且上层变量不应改变时，用<code>temp</code></li>
+</ul>
+<h3 id="3-4"><a href="#3-4" class="headerlink" title="3.4"></a>3.4</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112115180.png"
+                      alt="image-20230411211552157"
+                ></p>
+<ul>
+<li>数据陷阱：<code>1.0/(i*i)</code>会出现精度问题,原因是直接计算<code> i*i</code> 会溢出或者太小，应该用<code>(1.0/i)*(1.0/i)</code></li>
+<li>保留小数时注意用<code>fixed</code>，保留有效数字时不用加</li>
+</ul>
+<h3 id="3-5"><a href="#3-5" class="headerlink" title="3.5"></a>3.5</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112119477.png"
+                      alt="image-20230411211927458"
+                ></p>
+<ul>
+<li>数据陷阱：分数太小时double的精度不够</li>
+<li>解决方法：模拟手算，不断除余数</li>
+</ul>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> a, b, c;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">    cout &lt;&lt; a/b &lt;&lt; <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;c; i++)&#123;</span><br><span class="line">        a = a%b*<span class="number">10</span>;</span><br><span class="line">        cout &lt;&lt; a/b;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-6"><a href="#3-6" class="headerlink" title="3.6"></a>3.6</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112122207.png"
+                      alt="image-20230411212217181"
+                ></p>
+<ul>
+<li>新：用<code>STL</code>的<code>next_permutation(a,a+n)</code>，要包括<code>&lt;algorithm&gt;</code>的头文件</li>
+</ul>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> nums[<span class="number">9</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="type">int</span> a = nums[<span class="number">0</span>]*<span class="number">100</span> + nums[<span class="number">1</span>]*<span class="number">10</span> + nums[<span class="number">2</span>];</span><br><span class="line">        <span class="type">int</span> b = nums[<span class="number">3</span>]*<span class="number">100</span> + nums[<span class="number">4</span>]*<span class="number">10</span> + nums[<span class="number">5</span>];</span><br><span class="line">        <span class="type">int</span> c = nums[<span class="number">6</span>]*<span class="number">100</span> + nums[<span class="number">7</span>]*<span class="number">10</span> + nums[<span class="number">8</span>];</span><br><span class="line">        <span class="keyword">if</span>(a*<span class="number">2</span> == b &amp;&amp; a*<span class="number">3</span> == c)&#123;</span><br><span class="line">            cout &lt;&lt; a &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; b &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">next_permutation</span>(nums, nums+<span class="number">9</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-7"><a href="#3-7" class="headerlink" title="3.7"></a>3.7</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112124485.png"
+                      alt="image-20230411212418465"
+                ></p>
+<ul>
+<li>注意有些<code>固定算子</code>在每次循环前或后要重新赋为初始值，比如获得多个<code>sum</code>和<code>prod</code></li>
+<li>思考方式：要多用封装好的函数，减少底层逻辑思考，直接思考框架，如此题在遍历中用<code>max</code>，省去<code>if</code></li>
+</ul>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, prod=<span class="number">1</span>, ans;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> S[n], max1[n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        cin &gt;&gt; S[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*方法一：定义记录某元素为起始的所有连续子列乘积最大值的数组，再依次比较最大值</span></span><br><span class="line"><span class="comment">    for(int i=0; i&lt;n; i++)&#123;</span></span><br><span class="line"><span class="comment">        max1[i] = S[i]; //初始化max1[i]      </span></span><br><span class="line"><span class="comment">        for(int j=i; j&lt;n; j++)&#123;</span></span><br><span class="line"><span class="comment">            prod *= S[j]; //得到i开头的所有的连续子列乘积</span></span><br><span class="line"><span class="comment">            max1[i] = max(max1[i], prod); //不断更新max1[i]           </span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        prod = 1; //每次都要重新赋值为1           </span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法二：换算法，考虑到负数，记录以某元素结尾的子列的最大乘积和最小乘积</span></span><br><span class="line">    <span class="comment">//并不断比较得出新的最大积和最小积，新的最大积和最小积由5个可能的值通过max/min产生</span></span><br><span class="line">    <span class="comment">//省去了正负的判断，全用max代替，代码更简洁</span></span><br><span class="line">    <span class="comment">//同时可应对变式：非连续子列的最大积</span></span><br><span class="line">    <span class="type">int</span> maxProd = S[<span class="number">0</span>], minProd = S[<span class="number">0</span>], ans = S[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="type">int</span> a = S[i] * maxProd, b = S[i] * minProd;</span><br><span class="line">        maxProd = <span class="built_in">max</span>(S[i], <span class="built_in">max</span>(a, b));</span><br><span class="line">        <span class="comment">//变式：maxProd = max(max(max(S[i], max(a, b)),maxProd),minProd); </span></span><br><span class="line">        minProd = <span class="built_in">min</span>(S[i], <span class="built_in">min</span>(a, b));</span><br><span class="line">        <span class="comment">//变式：minProd = min(min(min(S[i], min(a, b)),maxProd),minProd);</span></span><br><span class="line">        ans = <span class="built_in">max</span>(ans, maxProd);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ans &gt; <span class="number">0</span>) cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-8"><a href="#3-8" class="headerlink" title="3.8"></a>3.8</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112133893.png"
+                      alt="image-20230411213326869"
+                ></p>
+<ul>
+<li>英文：分子<code>numerator</code>，分母：<code>denominator</code></li>
+<li>循环多且相互联系时，要注意彼此的<code>边界</code>，最好在写之前确定</li>
+</ul>
+<h3 id="3-9"><a href="#3-9" class="headerlink" title="3.9"></a>3.9</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304112137235.png"
+                      alt="image-20230411213753211"
+                ></p>
+<ul>
+<li>注意一下条件为<code>&lt;=</code>的<code>for循环</code>结束时<code>i</code>的值为<code>最大值+1</code></li>
+</ul>
+<h3 id="3-10"><a href="#3-10" class="headerlink" title="3.10"></a>3.10</h3><ul>
+<li>没啥好说的(<em>^▽^</em>)</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>NOJ Cpp</category>
+      </categories>
+      <tags>
+        <tag>NOJ</tag>
+        <tag>Cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NOJ C++ G4:func 记录</title>
+    <url>/2023/04/18/CppG4%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<ul>
+<li>这季的题目有点过于简单……</li>
+</ul>
+<h3 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304181606534.png"
+                      alt="image-20230418160605421"
+                ></p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//以下为经典小到大的排序</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sort</span><span class="params">(T x, T y, T z)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; y) <span class="built_in">swap</span>(x, y);</span><br><span class="line">    <span class="keyword">if</span> (x &gt; z) <span class="built_in">swap</span>(x, z);</span><br><span class="line">    <span class="keyword">if</span> (y &gt; z) <span class="built_in">swap</span>(y, z);</span><br><span class="line">    cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; z &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//字符输入时无需空格，连续输入，空格会被当作一个字符</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-4"><a href="#4-4" class="headerlink" title="4.4"></a>4.4</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304181611299.png"
+                      alt="image-20230418161104237"
+                ></p>
+<ul>
+<li><code>int</code>强制类型转换：自动舍去小数部分，即正数向下取整，负数向上取整。</li>
+</ul>
+<h3 id="4-5"><a href="#4-5" class="headerlink" title="4.5"></a>4.5</h3><p>循环移位</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304181608786.png"
+                      alt="image-20230418160751894"
+                ></p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">move</span><span class="params">(<span class="type">int</span> value, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> result;   </span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        n = -n; </span><br><span class="line">        result = (value&lt;&lt;n)|(value&gt;&gt;(<span class="number">32</span>-n));  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n &gt; <span class="number">0</span>) &#123; </span><br><span class="line">        result = (value&gt;&gt;n)|(value&lt;&lt;(<span class="number">32</span>-n));<span class="comment">//右移n位，按位或，左移32-n位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        result = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+]]></content>
+      <categories>
+        <category>NOJ Cpp</category>
+      </categories>
+      <tags>
+        <tag>NOJ</tag>
+        <tag>Cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DS-HW-Chap3</title>
+    <url>/2023/04/06/DS-HW-Chap3/</url>
+    <content><![CDATA[<ul>
+<li>注①：DS-HW均选自严蔚敏版习题册</li>
+<li>注②：本人习惯使用<code>C++</code>，但并未使用模板与类，除了<code>new</code>与<code>delete</code>，与课程所授<code>C</code>无异，可放心食用。</li>
+</ul>
+<h2 id="3-28"><a href="#3-28" class="headerlink" title="3.28"></a>3.28</h2><ul>
+<li><p>假设以带头结点的循环链表表示队列，并且只设一个指针指向队尾元素结点（注意不设头指针），试编写相应的队列初始化、入队列和出队列的算法。</p>
+</li>
+<li><p>以下为算法部分代码实现：</p>
+</li>
+<li><p>诶，就是不写注释(<em>^▽^</em>)</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Node</span> *pNode;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    pNode next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> pNode Position;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Queue</span> *pQueue;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Queue</span> &#123;</span><br><span class="line">    Position rear;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">pQueue <span class="title">createQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">    pQueue Q = <span class="keyword">new</span> Queue;</span><br><span class="line">    Q-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> Q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">enQueue</span><span class="params">(pQueue Q, <span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    Position p = <span class="keyword">new</span> Node;</span><br><span class="line">    p-&gt;data = x;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        p-&gt;next = p;</span><br><span class="line">        Q-&gt;rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        p-&gt;next = Q-&gt;rear-&gt;next;</span><br><span class="line">        Q-&gt;rear-&gt;next = p;</span><br><span class="line">        Q-&gt;rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">deQueue</span><span class="params">(pQueue Q)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is empty!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Position p = Q-&gt;rear-&gt;next;</span><br><span class="line">        <span class="type">int</span> x = p-&gt;data;</span><br><span class="line">        <span class="keyword">if</span>(Q-&gt;rear == p)&#123;</span><br><span class="line">            Q-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            Q-&gt;rear-&gt;next = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">delete</span> p;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3-29"><a href="#3-29" class="headerlink" title="3.29"></a>3.29</h2><ul>
+<li><p>如果希望循环队列中的元素都能得到利用，则需设置一个标志域 <code>tag</code>，并以 <code>tag</code> 的值为<code> 0</code> 和 <code>1</code>来区分，尾指针和头指针值相同时的队列状态是“空”还是“满”。试编写与此结构相应的<code>入队列</code>和<code>出队列</code>的算法，并从<code>时间</code>和<code>空间</code>角度讨论设标志和不设标志这两种方法的<code>使用范围</code>（如当循环队列容量较小而队列中每个元素占的空间较多时，哪一种方法较好）。</p>
+</li>
+<li><p>以下为算法部分代码实现：</p>
+</li>
+<li><p>还是没有注释哦~</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> Position;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Queue</span> *pQueue;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Queue</span> &#123;</span><br><span class="line">    <span class="type">int</span> *data;</span><br><span class="line">    Position front, rear;</span><br><span class="line">    <span class="type">int</span> maxSize;</span><br><span class="line">    <span class="type">int</span> tag;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">pQueue <span class="title">createQueue</span><span class="params">(<span class="type">int</span> maxSize)</span></span>&#123;</span><br><span class="line">    pQueue Q = <span class="keyword">new</span> Queue;</span><br><span class="line">    Q-&gt;data = <span class="keyword">new</span> <span class="type">int</span>[maxSize];</span><br><span class="line">    Q-&gt;front = Q-&gt;rear = <span class="number">0</span>;</span><br><span class="line">    Q-&gt;maxSize = maxSize;</span><br><span class="line">    Q-&gt;tag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> Q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">enQueue</span><span class="params">(pQueue Q, <span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((Q-&gt;rear + <span class="number">1</span>) % Q-&gt;maxSize == Q-&gt;front &amp;&amp; Q-&gt;tag == <span class="number">1</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is full!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Q-&gt;data[Q-&gt;rear] = x;</span><br><span class="line">        Q-&gt;rear = (Q-&gt;rear + <span class="number">1</span>) % Q-&gt;maxSize;</span><br><span class="line">        Q-&gt;tag = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">deQueue</span><span class="params">(pQueue Q)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear &amp;&amp; Q-&gt;tag == <span class="number">0</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is empty!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="type">int</span> x = Q-&gt;data[Q-&gt;front];</span><br><span class="line">        Q-&gt;front = (Q-&gt;front + <span class="number">1</span>) % Q-&gt;maxSize;</span><br><span class="line">        Q-&gt;tag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>这次的作业到这里就结束啦，有什么想说的欢迎在评论区留言~</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>DS HW</category>
+      </categories>
+      <tags>
+        <tag>DataStructure</tag>
+        <tag>HW</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NJU OOP三道好题</title>
+    <url>/2023/04/07/NJU%20OOP%E4%B8%89%E9%81%93%E5%A5%BD%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h1><ul>
+<li><p>任务描述</p>
+<ul>
+<li><p>智能指针是C++标准库提供的一种机制，用于防止内存泄漏，及时回收不再需要的内存。</p>
+</li>
+<li><p>当我们使用普通的指针变量时，一旦程序变得冗长复杂，难免会出现忘记释放内存的情况，导致可用的内存变少。</p>
+</li>
+<li><p>如果使用智能指针，那么智能指针内部会维护一个指针指向目标地址，和一个相关联的计数器指针（他们在内存上的地址并无关联，只有逻辑上的联系）。计数器统计持有目标地址的指针数量，一旦计数器为0，那么就可以认为没有任何指针可以访问到该地址，该地址将不再被需要，此时，就可以释放内存。</p>
+</li>
+<li><p>这样，我们就不需要关心内存的释放，而由智能指针选择在合适的时机释放内存。</p>
+</li>
+<li><p>本关要求你补全一个伪智能指针类<code>SmartPointer</code>，为了简单起见，本关中该智能指针类只能指向动态分配内存的<code>Node</code>类型的对象，并且一个<code>Node</code>对象地址只会用于初始化一个智能指针（<code>Node</code>类型是我们定义的占位类型，一个<code>Node</code>对象表示一块需要<code>SmartPointer</code>管理的空间）。</p>
+</li>
+<li><p>它在指针类内部维护两个关键成员变量：</p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">Node* pointer; </span><br><span class="line">int* ref_cnt;</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li><code>Node</code>类型的指针变量<code>pointer</code>。</li>
+<li>一个指向整型变量的指针<code>ref_cnt</code>，它指向的值<code>*ref_cnt</code>表示当前拥有<code>pointer</code>所指向的<code>Node</code>对象地址的<code>SmartPointer</code>对象数。</li>
+</ol>
+</li>
+<li><p>代码</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SmartPointer</span></span><br><span class="line">&#123;</span><br><span class="line">  Node *pointer;</span><br><span class="line">  <span class="type">int</span> *ref_cnt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">SmartPointer</span>()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// 空指针</span></span><br><span class="line">    pointer = <span class="literal">nullptr</span>;</span><br><span class="line">    ref_cnt = <span class="literal">nullptr</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">SmartPointer</span>(Node *p)</span><br><span class="line">  &#123;</span><br><span class="line">    pointer = p;</span><br><span class="line">    ref_cnt = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 需要完成的函数</span></span><br><span class="line">  <span class="built_in">SmartPointer</span>(<span class="type">const</span> SmartPointer &amp;sptr);</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">assign</span><span class="params">(<span class="type">const</span> SmartPointer &amp;sptr)</span></span>; <span class="comment">// 指针赋值，将sptr赋值给本指针</span></span><br><span class="line">  ~<span class="built_in">SmartPointer</span>();                       <span class="comment">// 析构函数，注意：为通过测试样例，需要保证析构函数可以被重复调用</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">Node</span>(<span class="type">int</span> id)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;id = id;</span><br><span class="line">  &#125;</span><br><span class="line">  ~<span class="built_in">Node</span>()</span><br><span class="line">  &#123;</span><br><span class="line">    std::cout &lt;&lt; id &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">SmartPointer::<span class="built_in">SmartPointer</span>(<span class="type">const</span> SmartPointer &amp;sptr)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (sptr.ref_cnt)</span><br><span class="line">    &#123;</span><br><span class="line">        (*(sptr.ref_cnt))++;</span><br><span class="line">    &#125;</span><br><span class="line">    pointer = sptr.pointer;</span><br><span class="line">    ref_cnt = sptr.ref_cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">SmartPointer::assign</span><span class="params">(<span class="type">const</span> SmartPointer &amp;sptr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> flag=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (pointer &amp;&amp; ref_cnt)</span><br><span class="line">    &#123;</span><br><span class="line">        (*ref_cnt)--;</span><br><span class="line">        <span class="keyword">if</span> (sptr.ref_cnt)<span class="comment">//先加防止自赋值情况</span></span><br><span class="line">        &#123;</span><br><span class="line">          (*(sptr.ref_cnt))++;</span><br><span class="line">          flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (*ref_cnt == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">delete</span> pointer;</span><br><span class="line">            pointer=<span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (sptr.ref_cnt&amp;&amp;!flag)</span><br><span class="line">    &#123;</span><br><span class="line">          (*(sptr.ref_cnt))++;</span><br><span class="line">    &#125;</span><br><span class="line">    pointer = sptr.pointer;</span><br><span class="line">    ref_cnt = sptr.ref_cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SmartPointer::~<span class="built_in">SmartPointer</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (pointer)</span><br><span class="line">    &#123;</span><br><span class="line">        (*ref_cnt)--;</span><br><span class="line">        <span class="keyword">if</span>(*ref_cnt==<span class="number">0</span>) <span class="keyword">delete</span> pointer, <span class="keyword">delete</span> ref_cnt;</span><br><span class="line">    &#125;</span><br><span class="line">    pointer = <span class="literal">nullptr</span>;</span><br><span class="line">    ref_cnt = <span class="literal">nullptr</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h1 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h1><ul>
+<li><p>迭代器是容器类（如数组，链表，队列，栈等）提供的、用于遍历和访问容器内对象的辅助类。在本题中，我们考虑一种简化的迭代器，它为我们自定义的整型数组类提供元素的遍历和访问。</p>
+</li>
+<li><p>自定义整型数组根据参数创建和维护特定长度的动态整型数组，并且提供迭代器<code>Iterator</code>来访问数组<code>arr</code>中的元素。由于迭代器常与特定类关联，所以我们使用<code>MyArray</code>的内部类来实现<code>Iterator</code></p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag">TODO:</span> finish the following class, and override the corresponding operator</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyArray</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> *arr;<span class="comment">//数组本身</span></span><br><span class="line">    <span class="type">int</span> size;<span class="comment">//数组长度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Iterator</span><span class="comment">//类内定义迭代器类</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="type">int</span> cnt;<span class="comment">//显示迭代器对象当前所指的数组位置</span></span><br><span class="line">        MyArray *target;<span class="comment">//指向需要维护的数组，注意这里不能使用成员对象，而只能使用成员对象指针</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">Iterator</span>(<span class="type">int</span> k, MyArray *a)<span class="comment">//迭代器的构建，根据需要传入初始位置和需维护数组</span></span><br><span class="line">        &#123;</span><br><span class="line">            cnt = k;</span><br><span class="line">            target = a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="type">bool</span> <span class="title">get</span><span class="params">(<span class="type">int</span> &amp;value)</span> <span class="type">const</span><span class="comment">//获得迭代器当前指向位置的值，若能找到，返回true，若当前迭代器指									向非数组合法区域，返回false</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (target &amp;&amp; cnt &gt;= <span class="number">0</span> &amp;&amp; cnt &lt; target-&gt;size)</span><br><span class="line">            &#123;</span><br><span class="line">                value = target-&gt;arr[cnt];</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="type">bool</span> <span class="title">put</span><span class="params">(<span class="type">int</span> value)</span><span class="comment">//向迭代器当前指向位置的元素赋值，若能找到，返回true，若当前迭代器指								向非数组合法区域，返回false</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (target &amp;&amp; cnt &gt;= <span class="number">0</span> &amp;&amp; cnt &lt; target-&gt;size)</span><br><span class="line">            &#123;</span><br><span class="line">                target-&gt;arr[cnt] = value;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Iterator &amp;<span class="keyword">operator</span>++()<span class="comment">//重载前置操作符++，实现自增</span></span><br><span class="line">        &#123;</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">const</span> Iterator <span class="keyword">operator</span>++(<span class="type">int</span>)<span class="comment">//重置后置操作符++</span></span><br><span class="line">        &#123;</span><br><span class="line">            Iterator temp = *<span class="keyword">this</span>;</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">        Iterator &amp;<span class="keyword">operator</span>--()<span class="comment">//重置前置操作符--</span></span><br><span class="line">        &#123;</span><br><span class="line">            cnt--;</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">const</span> Iterator <span class="keyword">operator</span>--(<span class="type">int</span>)<span class="comment">//重置后置操作符--</span></span><br><span class="line">        &#123;</span><br><span class="line">            Iterator temp = *<span class="keyword">this</span>;</span><br><span class="line">            cnt--;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> Iterator &amp;other)<span class="comment">//重置二元操作符==，判断两个迭代器是否指向同一位置</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (target == other.target &amp;&amp; cnt == other.cnt)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">bool</span> <span class="keyword">operator</span>!=(<span class="type">const</span> Iterator &amp;other)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> !(*<span class="keyword">this</span> == other);</span><br><span class="line">        &#125;</span><br><span class="line">        Iterator <span class="keyword">operator</span>+(<span class="type">int</span> m)<span class="comment">//重置操作符+，返回在当前迭代器位置基础上后移若干个位置的新迭代器</span></span><br><span class="line">        &#123;</span><br><span class="line">            Iterator temp = *<span class="keyword">this</span>;</span><br><span class="line">            temp.cnt += m;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">        Iterator <span class="keyword">operator</span>-(<span class="type">int</span> m)<span class="comment">//重置操作符-，返回在当前迭代器位置基础上前移若干个位置的新迭代器</span></span><br><span class="line">        &#123;</span><br><span class="line">            Iterator temp = *<span class="keyword">this</span>;</span><br><span class="line">            temp.cnt -= m;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyArray</span>(<span class="type">int</span> sz)<span class="comment">//创建需维护数组的对象</span></span><br><span class="line">    &#123;</span><br><span class="line">        size = sz;</span><br><span class="line">        arr = <span class="keyword">new</span> <span class="type">int</span>[size];</span><br><span class="line">    &#125;</span><br><span class="line">    ~<span class="built_in">MyArray</span>()<span class="comment">//析构，返还申请空间</span></span><br><span class="line">    &#123;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">delete</span>[] arr;</span><br><span class="line">        arr = <span class="literal">nullptr</span>;<span class="comment">//注意悬浮指针</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Iterator <span class="title">begin</span><span class="params">()</span><span class="comment">//返回该数组对象的开始迭代器，指向第0位</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (size &gt; <span class="number">0</span> &amp;&amp; arr != <span class="literal">nullptr</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Iterator</span>(<span class="number">0</span>, <span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span><span class="comment">//考虑已析构的数组对象，或size=0的情况，此时返回的迭代器指向nullptr</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Iterator</span>(<span class="number">0</span>, <span class="literal">nullptr</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Iterator <span class="title">end</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (size &gt; <span class="number">0</span> &amp;&amp; arr != <span class="literal">nullptr</span>)<span class="comment">//返回该数组对象的尾部迭代器，指向第size位</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Iterator</span>(size, <span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Iterator</span>(size, <span class="literal">nullptr</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h1><ul>
+<li><code>Plant2</code>类的植物有两个时间节点，<code>time1</code>和<code>time2</code>，该类植物从种植开始，生长<code>time1</code>天<strong>之后</strong>，每天便可以生产一株新的需要立马种植的<strong>完全相同</strong>的植物（可以看作每个新植物都会立马被种植），生长<code>time2</code>天<strong>之后</strong>，该植物就会死亡。例如某植物在第一天种植，<code>time1=1，time2=2</code>，那么会在第二天开始生产新植物，在第三天死亡（第三天不能生产新植物）。</li>
+</ul>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">Plant2 <span class="title">t</span><span class="params">(<span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>)</span></span>; <span class="comment">//目前已有存活的植物t</span></span><br><span class="line">t.<span class="built_in">func</span>(<span class="number">4</span>); <span class="comment">//植物t被种植，即开始发挥功能，距离关卡结束还有4天</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">getTotalPlant2Num</span>(); <span class="comment">//关卡结束，输出目前存活的植物数量</span></span><br><span class="line"><span class="comment">//func函数调用的时候即为将植物t种植下去经过4天，该种植物的time1=1，time2=3.</span></span><br><span class="line"><span class="comment">//第一天：植物t生长，但未生出新植物</span></span><br><span class="line"><span class="comment">//第二天：植物t生长超过1天，生出新植物t2</span></span><br><span class="line"><span class="comment">//第三天：植物t生出植物t3，植物t2生长超过1天，生出新植物t4</span></span><br><span class="line"><span class="comment">//第四天：植物t生长超过3天，死亡。植物t2生出t5,植物t3生出t6，植物t4生出t7</span></span><br><span class="line"><span class="comment">//目前有6株植物存活。</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Plant2</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> num2;</span><br><span class="line">    <span class="comment">//=========</span></span><br><span class="line">    <span class="type">int</span> time1 = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> time2 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="type">int</span> <span class="title">getTotalPlant2Num</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//=========</span></span><br><span class="line">    <span class="built_in">Plant2</span>(<span class="type">int</span> time1, <span class="type">int</span> time2); <span class="comment">// 需要完成的构造函数</span></span><br><span class="line">    <span class="comment">// 该植物类的功能，n表示该植物从种植开始经过的天数，n可能大于time2，具体可看示例</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span> n)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 获得Plant2的总数量</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getTotalPlant2Num</span><span class="params">()</span></span>;</span><br><span class="line"><span class="type">int</span> Plant2::num2 = <span class="number">0</span>;</span><br><span class="line">Plant2::<span class="built_in">Plant2</span>(<span class="type">int</span> time1, <span class="type">int</span> time2)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;time1 = time1;</span><br><span class="line">    <span class="keyword">this</span>-&gt;time2 = time2;</span><br><span class="line">    num2++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Plant2::func</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>, flag = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (cnt &lt; n)<span class="comment">//一株植物到游戏结束的总时长</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (cnt &gt;= time2)<span class="comment">//已经经过超过time2天，死亡，不再生成新植物</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag)<span class="comment">//当第一次到达该时间点，植物数量减一</span></span><br><span class="line">            &#123;</span><br><span class="line">                num2--;</span><br><span class="line">                flag = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (cnt &gt;= time1 &amp;&amp; flag == <span class="number">1</span>)<span class="comment">//到达time1时间，且未死亡</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">Plant2 <span class="title">a</span><span class="params">(time1, time2)</span></span>;<span class="comment">//构造新植物，数量加一</span></span><br><span class="line">            a.<span class="built_in">func</span>(n - cnt);<span class="comment">//新植物剩下的天数为生成他的植物的创造时剩余天数减去该植物已经过的天数</span></span><br><span class="line">        &#125;</span><br><span class="line">        cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getTotalPlant2Num</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Plant2::num2;<span class="comment">//返回植物的总数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>今天的内容就到这里啦，感谢几位NJU同学的分享~欢迎在评论区继续留言哦O(∩_∩)O</li>
+</ul>
+]]></content>
+      <categories>
+        <category>NJU好题</category>
+      </categories>
+      <tags>
+        <tag>NJU</tag>
+        <tag>OOP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NOJ DS G1:SeqList</title>
     <url>/2023/04/03/NWPU%20DS%20OJ%20Practice%20Answers/</url>
-    <content><![CDATA[<h3 id="G1-1"><a href="#G1-1" class="headerlink" title="G1.1"></a>G1.1</h3><p>Simple question, using SeqList and its Insertion.</p>
-<p>The total code is down here:</p>
+    <content><![CDATA[<h3 id="G1-1"><a href="#G1-1" class="headerlink" title="G1.1"></a>G1.1</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304070013231.png"
+                      alt="noj_ds1" style="zoom: 67%;" 
+                >
+
+<p>Simple question, using SeqList and its Insertion.</p>
+<p>The code is down here:</p>
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Language up to you; Personally use cpp more.</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">SeqList</span> &#123;</span><br><span class="line">    <span class="type">int</span> elenum;</span><br><span class="line">    <span class="type">int</span> list[MAXSIZE];</span><br><span class="line">&#125;SeqList, *pSeqList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Insert</span><span class="params">(<span class="type">int</span> x, pSeqList pl)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; pl-&gt;elenum; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &lt; pl-&gt;list[i]) &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = pl-&gt;elenum; j &gt; i; j--) &#123;</span><br><span class="line">                pl-&gt;list[j] = pl-&gt;list[j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            pl-&gt;list[i] = x;</span><br><span class="line">            pl-&gt;elenum++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SeqList L;</span><br><span class="line">    pSeqList pl = &amp;L;</span><br><span class="line">    <span class="type">int</span> x, i;</span><br><span class="line">    cin &gt;&gt; L.elenum ;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; L.elenum; i++) &#123;</span><br><span class="line">        cin &gt;&gt; L.list[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="built_in">Insert</span>(x, pl);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; L.elenum; i++) &#123;</span><br><span class="line">        cout &lt;&lt; L.list[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 ]]></content>
@@ -90,96 +342,128 @@
       </tags>
   </entry>
   <entry>
+    <title>我的第一篇博客文章</title>
+    <url>/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>NOJ Cpp G2:Loop</title>
     <url>/2023/04/04/NWPU-Cpp-OJ-Practice-Answers/</url>
     <content><![CDATA[<ul>
 <li>注1：头文件及命名空间等已省略，需要用到<code>&lt;cmath&gt;</code> <code>&lt;iomanip&gt;</code>等时会标出；</li>
 <li>注2：此季度每个人抽到的题目会有所不同</li>
 </ul>
-<h2 id="G2-1"><a href="#G2-1" class="headerlink" title="G2.1"></a>G2.1</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042129078.png" alt="image-20230404212932037" style="zoom:50%;" />
+<h2 id="G2-1"><a href="#G2-1" class="headerlink" title="G2.1"></a>G2.1</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042129078.png"
+                      alt="image-20230404212932037" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">char</span> A, B, C;</span><br><span class="line">    <span class="keyword">for</span> (A = <span class="string">&#x27;X&#x27;</span>; A &lt;= <span class="string">&#x27;Z&#x27;</span>; A++)</span><br><span class="line">        <span class="keyword">for</span> (B = <span class="string">&#x27;X&#x27;</span>; B &lt;= <span class="string">&#x27;Z&#x27;</span>; B++)</span><br><span class="line">            <span class="keyword">if</span> (A != B)</span><br><span class="line">                <span class="keyword">for</span> (C = <span class="string">&#x27;X&#x27;</span>; C &lt;= <span class="string">&#x27;Z&#x27;</span>; C++)</span><br><span class="line">                    <span class="keyword">if</span> (A != C &amp;&amp; B != C)</span><br><span class="line">                        <span class="keyword">if</span> (A != <span class="string">&#x27;X&#x27;</span> &amp;&amp; C != <span class="string">&#x27;X&#x27;</span> &amp;&amp; C != <span class="string">&#x27;Z&#x27;</span>)</span><br><span class="line">                            cout &lt;&lt; <span class="string">&quot;A=&quot;</span> &lt;&lt; A &lt;&lt; endl</span><br><span class="line">                                 &lt;&lt; <span class="string">&quot;B=&quot;</span> &lt;&lt; B &lt;&lt; endl</span><br><span class="line">                                 &lt;&lt; <span class="string">&quot;C=&quot;</span> &lt;&lt; C &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="G2-2"><a href="#G2-2" class="headerlink" title="G2.2"></a>G2.2</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042129663.png" alt="image-20230404212900881" style="zoom:50%;" />
+<h2 id="G2-2"><a href="#G2-2" class="headerlink" title="G2.2"></a>G2.2</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042129663.png"
+                      alt="image-20230404212900881" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> a, a1=<span class="number">1</span>, a2=<span class="number">1</span>, n=<span class="number">0</span>, sum=<span class="number">0</span>, temp;</span><br><span class="line">    <span class="keyword">for</span> (sum=<span class="number">0</span>; sum&lt;=<span class="number">100</span>; n++)&#123;</span><br><span class="line">        temp = a2;</span><br><span class="line">        sum = sum + a1;</span><br><span class="line">        a2 = a1 + <span class="number">2</span>* a2;</span><br><span class="line">        a1 = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; n<span class="number">-1</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">for</span> (sum=<span class="number">0</span>; sum&lt;=<span class="number">1000</span>; n++)&#123;</span><br><span class="line">        temp = a2;</span><br><span class="line">        sum = sum + a1;</span><br><span class="line">        a2 = a1 + <span class="number">2</span>* a2;</span><br><span class="line">        a1 = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; n<span class="number">-1</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">for</span> (sum=<span class="number">0</span>; sum&lt;=<span class="number">10000</span>; n++)&#123;</span><br><span class="line">        temp = a2;</span><br><span class="line">        sum = sum + a1;</span><br><span class="line">        a2 = a1 + <span class="number">2</span>* a2;</span><br><span class="line">        a1 = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; n<span class="number">-1</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h2 id="G2-3"><a href="#G2-3" class="headerlink" title="G2.3"></a>G2.3</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042128176.png" alt="image-20230404212834130" style="zoom:50%;" />
+<h2 id="G2-3"><a href="#G2-3" class="headerlink" title="G2.3"></a>G2.3</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042128176.png"
+                      alt="image-20230404212834130" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> left_peaches = <span class="number">1</span>, total_peaches = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        total_peaches = left_peaches;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (total_peaches%<span class="number">4</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            total_peaches = total_peaches/<span class="number">4</span> * <span class="number">5</span> + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (total_peaches%<span class="number">4</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            total_peaches = total_peaches/<span class="number">4</span> * <span class="number">5</span> + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        left_peaches++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; total_peaches &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; left_peaches;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h2 id="G2-4"><a href="#G2-4" class="headerlink" title="G2.4"></a>G2.4</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042128426.png" alt="image-20230404212811387" style="zoom:50%;" />
+<h2 id="G2-4"><a href="#G2-4" class="headerlink" title="G2.4"></a>G2.4</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042128426.png"
+                      alt="image-20230404212811387" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">double</span> a;</span><br><span class="line">    cin &gt;&gt; a;</span><br><span class="line">    <span class="type">int</span> digit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(a &gt; <span class="number">1</span>)&#123;</span><br><span class="line">        a /= <span class="number">10</span>;</span><br><span class="line">        digit++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; digit &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h2 id="G2-5"><a href="#G2-5" class="headerlink" title="G2.5"></a>G2.5</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042127780.png" alt="image-20230404212751733" style="zoom:50%;" />
+<h2 id="G2-5"><a href="#G2-5" class="headerlink" title="G2.5"></a>G2.5</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042127780.png"
+                      alt="image-20230404212751733" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">double</span> a, x, temp;</span><br><span class="line">    cin &gt;&gt; a;</span><br><span class="line">    x= a;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        temp = x;</span><br><span class="line">        x = (x + a/x)/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">if</span>(x == temp)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%.5f&quot;</span>, x);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h2 id="G2-6"><a href="#G2-6" class="headerlink" title="G2.6"></a>G2.6</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042127011.png" alt="image-20230404212711961" style="zoom:50%;" />
+<h2 id="G2-6"><a href="#G2-6" class="headerlink" title="G2.6"></a>G2.6</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042127011.png"
+                      alt="image-20230404212711961" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j, sum;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>; i&lt;=<span class="number">1000</span>; i++)&#123;</span><br><span class="line">        sum = <span class="number">0</span>;<span class="comment">//此处sum必须初始化为0，否则会出现错误</span></span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">1</span>; j&lt;=i/<span class="number">2</span>; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i%j==<span class="number">0</span>)&#123;</span><br><span class="line">                sum += j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (sum == i)&#123;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&quot;=1&quot;</span>;</span><br><span class="line">            <span class="keyword">for</span> (j=<span class="number">2</span>; j&lt;=i/<span class="number">2</span>; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (i%j==<span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;+&quot;</span> &lt;&lt; j;</span><br><span class="line">            &#125;</span><br><span class="line">            cout &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h2 id="G2-7"><a href="#G2-7" class="headerlink" title="G2.7"></a>G2.7</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042126904.png" alt="image-20230404212638857" style="zoom:50%;" />
+<h2 id="G2-7"><a href="#G2-7" class="headerlink" title="G2.7"></a>G2.7</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042126904.png"
+                      alt="image-20230404212638857" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//注意：此题要加上两个数学头文件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> n, j;</span><br><span class="line">	<span class="type">double</span> sum=<span class="number">0</span>, x, y, z;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(j = <span class="number">1</span>; j&lt;=n; j++)&#123;</span><br><span class="line">		x = <span class="built_in">pow</span>(<span class="number">2</span>, j);</span><br><span class="line">		y = <span class="built_in">pow</span>(<span class="number">2</span>, j+<span class="number">1</span>);</span><br><span class="line">		z = <span class="built_in">pow</span>(<span class="number">-1</span>, j);</span><br><span class="line">		sum = sum - z*x/((x + z) * (y - z));</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">6</span>) &lt;&lt; sum;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h2 id="G2-8"><a href="#G2-8" class="headerlink" title="G2.8"></a>G2.8</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042124655.png" alt="image-20230404212442313" style="zoom:50%;" />
+<h2 id="G2-8"><a href="#G2-8" class="headerlink" title="G2.8"></a>G2.8</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042124655.png"
+                      alt="image-20230404212442313" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">double</span> x1=<span class="number">2.0</span>, x2=<span class="number">3.0</span>, y1=<span class="number">1.0</span>, y2=<span class="number">2.0</span>;</span><br><span class="line">    <span class="type">double</span> sum=<span class="number">0.0</span>, temp;</span><br><span class="line">    <span class="type">double</span> a = x1/y1/<span class="number">1.0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">20</span>; i++)&#123;</span><br><span class="line">        sum += a;</span><br><span class="line">        temp = x2;</span><br><span class="line">        x2 =x1 + x2;</span><br><span class="line">        x1 = temp;</span><br><span class="line">        temp = y2;</span><br><span class="line">        y2 = y1 + y2;</span><br><span class="line">        y1 = temp;</span><br><span class="line">        a = x1/y1/<span class="number">1.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.6f&quot;</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
-<h2 id="G2-9"><a href="#G2-9" class="headerlink" title="G2.9"></a>G2.9</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042123927.png" alt="image-20230404212330619" style="zoom:50%;" />
+<h2 id="G2-9"><a href="#G2-9" class="headerlink" title="G2.9"></a>G2.9</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042123927.png"
+                      alt="image-20230404212330619" style="zoom:50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//注意：此题要加上两个数学头文件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">double</span> a, b, x;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    x = (a+b)/<span class="number">2</span>;</span><br><span class="line">    <span class="comment">//二分法求此方程的根：2*x**3 - 4*x**2 + 3*x - 6 = 0;</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">abs</span>(<span class="number">2</span>*x*x*x - <span class="number">4</span>*x*x + <span class="number">3</span>*x - <span class="number">6</span>) &gt; <span class="number">1e-6</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">2</span>*x*x*x - <span class="number">4</span>*x*x + <span class="number">3</span>*x - <span class="number">6</span> &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            b = x;</span><br><span class="line">            x = (a+b)/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">2</span>*x*x*x - <span class="number">4</span>*x*x + <span class="number">3</span>*x - <span class="number">6</span> &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            a = x;</span><br><span class="line">            x = (a+b)/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">2</span>) &lt;&lt; x;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="G2-10"><a href="#G2-10" class="headerlink" title="G2.10"></a>G2.10</h2><img src="https://raw.githubusercontent.com/deltaR-3k/PicGo/main/202304042117407.jpg" style="zoom: 50%;" />
+<h2 id="G2-10"><a href="#G2-10" class="headerlink" title="G2.10"></a>G2.10</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ob-and-pic.oss-cn-beijing.aliyuncs.com/img/PicGo-main/202304042117407.jpg"
+                      style="zoom: 50%;" 
+                >
 
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, temp;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">if</span> (n%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">        cout &lt;&lt; n &lt;&lt; <span class="string">&quot;*&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;*&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;=&quot;</span> &lt;&lt; n*n*n &lt;&lt; <span class="string">&quot;=&quot;</span>;</span><br><span class="line">        temp = n*n - (n/<span class="number">2</span>)*<span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">        cout &lt;&lt; temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n<span class="number">-1</span>; temp=temp+<span class="number">2</span>, i++)&#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;+&quot;</span> &lt;&lt; temp+<span class="number">2</span>;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n%<span class="number">2</span>==<span class="number">1</span>)&#123;</span><br><span class="line">        cout &lt;&lt; n &lt;&lt; <span class="string">&quot;*&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;*&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;=&quot;</span> &lt;&lt; n*n*n &lt;&lt; <span class="string">&quot;=&quot;</span>;</span><br><span class="line">        temp = n*n - (n/<span class="number">2</span>)*<span class="number">2</span>;</span><br><span class="line">        cout &lt;&lt; temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;n<span class="number">-1</span>; temp=temp+<span class="number">2</span>, i++)&#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;+&quot;</span> &lt;&lt; temp+<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 ]]></content>
       <categories>
-        <category>NOJ Cpp Answers</category>
+        <category>NOJ Cpp</category>
       </categories>
       <tags>
         <tag>NOJ</tag>
         <tag>Cpp</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>我的第一篇博客文章</title>
-    <url>/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/04/05/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
   </entry>
 </search>
