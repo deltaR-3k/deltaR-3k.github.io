@@ -110,6 +110,43 @@
       </tags>
   </entry>
   <entry>
+    <title>DS-HW-Chap3</title>
+    <url>/2023/04/06/DS-HW-Chap3/</url>
+    <content><![CDATA[<ul>
+<li>注①：DS-HW均选自严蔚敏版习题册</li>
+<li>注②：本人习惯使用<code>C++</code>，但并未使用模板与类，除了<code>new</code>与<code>delete</code>，与课程所授<code>C</code>无异，可放心食用。</li>
+</ul>
+<h2 id="3-28"><a href="#3-28" class="headerlink" title="3.28"></a>3.28</h2><ul>
+<li><p>假设以带头结点的循环链表表示队列，并且只设一个指针指向队尾元素结点（注意不设头指针），试编写相应的队列初始化、入队列和出队列的算法。</p>
+</li>
+<li><p>以下为算法部分代码实现：</p>
+</li>
+<li><p>诶，就是不写注释(<em>^▽^</em>)</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Node</span> *pNode;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    pNode next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> pNode Position;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Queue</span> *pQueue;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Queue</span> &#123;</span><br><span class="line">    Position rear;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">pQueue <span class="title">createQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">    pQueue Q = <span class="keyword">new</span> Queue;</span><br><span class="line">    Q-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> Q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">enQueue</span><span class="params">(pQueue Q, <span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    Position p = <span class="keyword">new</span> Node;</span><br><span class="line">    p-&gt;data = x;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        p-&gt;next = p;</span><br><span class="line">        Q-&gt;rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        p-&gt;next = Q-&gt;rear-&gt;next;</span><br><span class="line">        Q-&gt;rear-&gt;next = p;</span><br><span class="line">        Q-&gt;rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">deQueue</span><span class="params">(pQueue Q)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is empty!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Position p = Q-&gt;rear-&gt;next;</span><br><span class="line">        <span class="type">int</span> x = p-&gt;data;</span><br><span class="line">        <span class="keyword">if</span>(Q-&gt;rear == p)&#123;</span><br><span class="line">            Q-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            Q-&gt;rear-&gt;next = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">delete</span> p;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3-29"><a href="#3-29" class="headerlink" title="3.29"></a>3.29</h2><ul>
+<li><p>如果希望循环队列中的元素都能得到利用，则需设置一个标志域 <code>tag</code>，并以 <code>tag</code> 的值为<code> 0</code> 和 <code>1</code>来区分，尾指针和头指针值相同时的队列状态是“空”还是“满”。试编写与此结构相应的<code>入队列</code>和<code>出队列</code>的算法，并从<code>时间</code>和<code>空间</code>角度讨论设标志和不设标志这两种方法的<code>使用范围</code>（如当循环队列容量较小而队列中每个元素占的空间较多时，哪一种方法较好）。</p>
+</li>
+<li><p>以下为算法部分代码实现：</p>
+</li>
+<li><p>还是没有注释哦~</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> Position;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Queue</span> *pQueue;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Queue</span> &#123;</span><br><span class="line">    <span class="type">int</span> *data;</span><br><span class="line">    Position front, rear;</span><br><span class="line">    <span class="type">int</span> maxSize;</span><br><span class="line">    <span class="type">int</span> tag;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">pQueue <span class="title">createQueue</span><span class="params">(<span class="type">int</span> maxSize)</span></span>&#123;</span><br><span class="line">    pQueue Q = <span class="keyword">new</span> Queue;</span><br><span class="line">    Q-&gt;data = <span class="keyword">new</span> <span class="type">int</span>[maxSize];</span><br><span class="line">    Q-&gt;front = Q-&gt;rear = <span class="number">0</span>;</span><br><span class="line">    Q-&gt;maxSize = maxSize;</span><br><span class="line">    Q-&gt;tag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> Q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">enQueue</span><span class="params">(pQueue Q, <span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((Q-&gt;rear + <span class="number">1</span>) % Q-&gt;maxSize == Q-&gt;front &amp;&amp; Q-&gt;tag == <span class="number">1</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is full!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Q-&gt;data[Q-&gt;rear] = x;</span><br><span class="line">        Q-&gt;rear = (Q-&gt;rear + <span class="number">1</span>) % Q-&gt;maxSize;</span><br><span class="line">        Q-&gt;tag = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">deQueue</span><span class="params">(pQueue Q)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear &amp;&amp; Q-&gt;tag == <span class="number">0</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is empty!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="type">int</span> x = Q-&gt;data[Q-&gt;front];</span><br><span class="line">        Q-&gt;front = (Q-&gt;front + <span class="number">1</span>) % Q-&gt;maxSize;</span><br><span class="line">        Q-&gt;tag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>这次的作业到这里就结束啦，有什么想说的欢迎在评论区留言~</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>DS HW</category>
+      </categories>
+      <tags>
+        <tag>DataStructure</tag>
+        <tag>HW</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NOJ C++ G4:func 记录</title>
     <url>/2023/04/18/CppG4%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<ul>
@@ -150,43 +187,6 @@
       <tags>
         <tag>NOJ</tag>
         <tag>Cpp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DS-HW-Chap3</title>
-    <url>/2023/04/06/DS-HW-Chap3/</url>
-    <content><![CDATA[<ul>
-<li>注①：DS-HW均选自严蔚敏版习题册</li>
-<li>注②：本人习惯使用<code>C++</code>，但并未使用模板与类，除了<code>new</code>与<code>delete</code>，与课程所授<code>C</code>无异，可放心食用。</li>
-</ul>
-<h2 id="3-28"><a href="#3-28" class="headerlink" title="3.28"></a>3.28</h2><ul>
-<li><p>假设以带头结点的循环链表表示队列，并且只设一个指针指向队尾元素结点（注意不设头指针），试编写相应的队列初始化、入队列和出队列的算法。</p>
-</li>
-<li><p>以下为算法部分代码实现：</p>
-</li>
-<li><p>诶，就是不写注释(<em>^▽^</em>)</p>
-<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Node</span> *pNode;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    pNode next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> pNode Position;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Queue</span> *pQueue;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Queue</span> &#123;</span><br><span class="line">    Position rear;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">pQueue <span class="title">createQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">    pQueue Q = <span class="keyword">new</span> Queue;</span><br><span class="line">    Q-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> Q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">enQueue</span><span class="params">(pQueue Q, <span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    Position p = <span class="keyword">new</span> Node;</span><br><span class="line">    p-&gt;data = x;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        p-&gt;next = p;</span><br><span class="line">        Q-&gt;rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        p-&gt;next = Q-&gt;rear-&gt;next;</span><br><span class="line">        Q-&gt;rear-&gt;next = p;</span><br><span class="line">        Q-&gt;rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">deQueue</span><span class="params">(pQueue Q)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;rear == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is empty!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Position p = Q-&gt;rear-&gt;next;</span><br><span class="line">        <span class="type">int</span> x = p-&gt;data;</span><br><span class="line">        <span class="keyword">if</span>(Q-&gt;rear == p)&#123;</span><br><span class="line">            Q-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            Q-&gt;rear-&gt;next = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">delete</span> p;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="3-29"><a href="#3-29" class="headerlink" title="3.29"></a>3.29</h2><ul>
-<li><p>如果希望循环队列中的元素都能得到利用，则需设置一个标志域 <code>tag</code>，并以 <code>tag</code> 的值为<code> 0</code> 和 <code>1</code>来区分，尾指针和头指针值相同时的队列状态是“空”还是“满”。试编写与此结构相应的<code>入队列</code>和<code>出队列</code>的算法，并从<code>时间</code>和<code>空间</code>角度讨论设标志和不设标志这两种方法的<code>使用范围</code>（如当循环队列容量较小而队列中每个元素占的空间较多时，哪一种方法较好）。</p>
-</li>
-<li><p>以下为算法部分代码实现：</p>
-</li>
-<li><p>还是没有注释哦~</p>
-<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> Position;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Queue</span> *pQueue;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Queue</span> &#123;</span><br><span class="line">    <span class="type">int</span> *data;</span><br><span class="line">    Position front, rear;</span><br><span class="line">    <span class="type">int</span> maxSize;</span><br><span class="line">    <span class="type">int</span> tag;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">pQueue <span class="title">createQueue</span><span class="params">(<span class="type">int</span> maxSize)</span></span>&#123;</span><br><span class="line">    pQueue Q = <span class="keyword">new</span> Queue;</span><br><span class="line">    Q-&gt;data = <span class="keyword">new</span> <span class="type">int</span>[maxSize];</span><br><span class="line">    Q-&gt;front = Q-&gt;rear = <span class="number">0</span>;</span><br><span class="line">    Q-&gt;maxSize = maxSize;</span><br><span class="line">    Q-&gt;tag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> Q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">enQueue</span><span class="params">(pQueue Q, <span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((Q-&gt;rear + <span class="number">1</span>) % Q-&gt;maxSize == Q-&gt;front &amp;&amp; Q-&gt;tag == <span class="number">1</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is full!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Q-&gt;data[Q-&gt;rear] = x;</span><br><span class="line">        Q-&gt;rear = (Q-&gt;rear + <span class="number">1</span>) % Q-&gt;maxSize;</span><br><span class="line">        Q-&gt;tag = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">deQueue</span><span class="params">(pQueue Q)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Q-&gt;front == Q-&gt;rear &amp;&amp; Q-&gt;tag == <span class="number">0</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Queue is empty!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="type">int</span> x = Q-&gt;data[Q-&gt;front];</span><br><span class="line">        Q-&gt;front = (Q-&gt;front + <span class="number">1</span>) % Q-&gt;maxSize;</span><br><span class="line">        Q-&gt;tag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>这次的作业到这里就结束啦，有什么想说的欢迎在评论区留言~</p>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>DS HW</category>
-      </categories>
-      <tags>
-        <tag>DataStructure</tag>
-        <tag>HW</tag>
       </tags>
   </entry>
   <entry>
@@ -269,6 +269,11 @@
       </tags>
   </entry>
   <entry>
+    <title>我的第一篇博客文章</title>
+    <url>/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>大学美育笔记</title>
     <url>/2023/03/01/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E8%82%B2%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="第一章-审美需要"><a href="#第一章-审美需要" class="headerlink" title="第一章 审美需要"></a>第一章 审美需要</h1><p>人的需要：生存需要（基本）、享受需要、发展需要（人的本质需要，一种永恒的精神性追求）。<br>快感：生存需要获得满足，就会产生快感，而物质享受便是生存需要的高级满足，所以必然会产生快感<br>审美需要本质上是一种精神、情感的享受需要。 </p>
@@ -340,11 +345,6 @@
       <tags>
         <tag>水课笔记</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>我的第一篇博客文章</title>
-    <url>/2023/03/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>NOJ Cpp G2:Loop</title>
