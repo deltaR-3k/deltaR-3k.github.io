@@ -41,7 +41,7 @@ Feel free to contact me at [imchensp@gmail.com](mailto:imchensp@gmail.com) if yo
   <div class="content-container">
     <h3>University of Alberta</h3>
     <p>Research Intern, 2024.7 - 2024.9</p>
-    <p>Worked on 3D vision research focused on semantic analysis and recognition of traffic road point clouds. The project involved processing and analyzing 3D point cloud data of road environments, developing algorithms for object detection and classification, and generating textual descriptions of the scenes. This experience enhanced my understanding of 3D computer vision techniques and their applications in autonomous driving and smart transportation systems.</p>
+    <p>Worked on 3D vision research focused on semantic analysis and recognition of traffic road point clouds, and generating textual descriptions of the scenes.</p>
   </div>
 </div>
 
