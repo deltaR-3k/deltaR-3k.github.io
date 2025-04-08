@@ -3,29 +3,20 @@
    ========================================================================== */
 
 $(document).ready(function () {
-  // Set the theme on page load
-  var setTheme = function (theme) {
-    const use_theme = theme || localStorage.getItem("theme") || $("html").attr("data-theme");
-    if (use_theme === "dark") {
-      $("html").attr("data-theme", "dark");
-      $("#theme-icon").removeClass("fa-sun").addClass("fa-moon");
-    } else if (use_theme === "light") {
-      $("html").removeAttr("data-theme");
-      $("#theme-icon").removeClass("fa-moon").addClass("fa-sun");
-    }
-  }
-  setTheme();
+  // Sticky footer
+  var footerHeight = $(".page__footer").outerHeight(true);
+  updateFooterSticky(footerHeight);
 
-  // Toggle the theme
-  var toggleTheme = function () {
-    const current_theme = $("html").attr("data-theme");
-    const new_theme = current_theme === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", new_theme);
-    setTheme(new_theme);
+  // add lightbox class to all image links
+  $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.JPG'],a[href$='.png'],a[href$='.gif'],a[href$='.webp']").addClass("image-popup");
+
+  // FitVids init
+  $("#main").fitVids();
+
+  // Sticky sidebar
+  var stickySideBar = function() {
+    // ... existing code ...
   }
-  $('#theme-toggle').on('click', function () {
-    toggleTheme();
-  });
 
   // These should be the same as the settings in _variables.scss
   const scssLarge = 925; // pixels
@@ -48,9 +39,6 @@ $(document).ready(function () {
     }
   }, 250);
 
-  // FitVids init
-  fitvids();
-
   // Follow menu drop down
   $(".author__urls-wrapper button").on("click", function () {
     $(".author__urls").fadeToggle("fast", function () { });
@@ -66,9 +54,6 @@ $(document).ready(function () {
 
   // init smooth scroll, this needs to be slightly more than then fixed masthead height
   $("a").smoothScroll({ offset: -65 });
-
-  // add lightbox class to all image links
-  $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.JPG'],a[href$='.png'],a[href$='.gif']").addClass("image-popup");
 
   // Magnific-Popup options
   $(".image-popup").magnificPopup({
